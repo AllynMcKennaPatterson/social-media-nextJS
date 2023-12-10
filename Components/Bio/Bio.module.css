@@ -1,0 +1,62 @@
+.profileLeftBar {
+    flex: 1;
+  }
+  
+  .friendsContainer {
+    width: 18pc;
+    height: 50vh;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .notificationsContainer {
+    width: 18pc;
+    height: 50vh;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .friendImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 18%;
+    object-fit: cover;
+  }
+  
+  .likeImage {
+    width: 40px;
+    height: 40px;
+    margin-left: 40px;
+    border-radius: 3px;
+  }
+  
+  .notification {
+    display: "flex";
+    align-items: "center";
+    margin-top: "10px";
+  }
+  
+  .followingUserImage {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-left: 37px;
+  }
+  
+  .profilePageImage {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .profileCoverImage {
+    width: 100%;
+  }
+  
