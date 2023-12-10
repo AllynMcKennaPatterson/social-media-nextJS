@@ -16,10 +16,10 @@ function HomeFeed(props) {
         {props.posts.map((post) => (
           <Post
             // key={meetup.meetingId}
-            id={meetup.meetingId}
-            image={meetup.image}
-            title={meetup.title}
-            address={meetup.address}
+            id={post.meetingId}
+            image={post.image}
+            title={post.title}
+            address={post.address}
           />
         ))}
       </ul>

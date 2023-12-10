@@ -31,7 +31,11 @@ export function GlobalContextProvider(props) {
     setGlobals((previousGlobals) => {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.posts = data.posts;
-      newGlobals.dataLoaded = false;
+      if (newGlobals.posts === undefined) {
+        newGlobals.dataLoaded = false;
+      } else {
+        newGlobals.dataLoaded = true;
+      }
       return newGlobals;
     });
   }
