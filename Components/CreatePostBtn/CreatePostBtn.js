@@ -11,7 +11,7 @@ export default function CreatePostBtn(props) {
       <span className={classes.mainSpan}>
         <IconContext.Provider
           value={{
-            color: "#0b0a52",
+            color: "#33024d",
           }}
         >
           <AiFillPlusCircle />

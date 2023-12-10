@@ -3,7 +3,7 @@
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   width: 800px;
-  height: 300px;
+  height: 350px;
   position: fixed;
   top: 40%;
   right: 50%;
@@ -14,7 +14,14 @@
   align-content: center;
   z-index: 6;
 }
-
+.postContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -27,17 +34,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 80%;
 }
 
 .input {
-  width: 150%;
+  width: 100%;
   resize: none;
   border-radius: 10px;
 }
 
 .postBtn {
   padding-left: 25px;
-  background-color: #aaa;
+  background-color: #aaaaaa;
   padding-right: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -45,8 +53,32 @@
   border: none;
   cursor: pointer;
   margin-top: 10px;
+  width: 200px;
 }
 
 .postBtn:hover {
   background-color: #949494;
+}
+
+.label{
+  margin-right: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  
+}
+
+.control{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items:flex-start;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom:20px;
+}
+
+.inputBox{
+  width: 70%;
+  height: 20px;
 }

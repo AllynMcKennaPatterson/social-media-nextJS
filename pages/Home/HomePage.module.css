@@ -1,0 +1,12 @@
+.home {
+    background-color: rgb(224, 226, 230);
+  }
+  
+  .componentContainer {
+    width: 80%;
+    min-height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  

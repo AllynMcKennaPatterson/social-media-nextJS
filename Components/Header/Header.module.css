@@ -29,11 +29,15 @@
 .iconsContainer {
   display: flex;
   align-items: center;
-  flex: 0.22;
+  justify-content: center;
+  flex: 0.25;
 }
 
 .logoContainer {
-  flex: 0.2;
+  flex: 0.25;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icons {
