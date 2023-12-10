@@ -15,7 +15,6 @@ function CreatePostModal(props) {
   const usernameInputRef = useRef();
   const contentInputRef = useRef();
   const imageInputRef = useRef();
-  const timeInputRef = useRef();
 
   function zeroPad(number) {
     return number < 10 ? "0" + number : number;
