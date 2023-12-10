@@ -11,7 +11,7 @@ function Header() {
     <div className={classes.mainNavbar}>
       <div className={classes.logoContainer}>
         <Link className={classes.link} href="/">
-          <p style={{marginLeft: "50px"}}>Home</p>
+          <p className={classes.navButton}>Home</p>
         </Link>
       </div>
       <div>
