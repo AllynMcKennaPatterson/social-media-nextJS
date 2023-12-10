@@ -1,0 +1,19 @@
+.mainDiv {
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 50%;
+    right: 50px;
+    bottom: 50px;
+    position: fixed;
+    z-index: 30;
+  }
+  
+  .mainSpan {
+    background: transparent;
+    text-align: center;
+    color: #0b0a52;
+    font-size: 80px;
+  }
+  

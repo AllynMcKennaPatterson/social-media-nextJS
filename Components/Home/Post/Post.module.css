@@ -1,0 +1,47 @@
+.subPostContainer {
+    width: 94%;
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  .profileImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 15px;
+  }
+  
+  .postImage {
+    height: 250px;
+    margin-top: 10px;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  
+  .postIcon {
+    width: 20px;
+    /* margin-left: 10px;*/
+  }
+  
+  .commentInput {
+      width: 60%;
+    margin-left: 10px;
+    height: 4vh;
+    border: none;
+  }
+  
+  .addCommenButton {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: #aaa;
+    cursor: "pointer";
+    margin-left: 10px;
+  }
+  
