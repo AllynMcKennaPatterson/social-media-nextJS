@@ -1,62 +1,71 @@
 .mainNavbar {
-    display: flex;
-    width: 100%;
-    margin: auto;
-    justify-content: space-between;
-    background-color: rgb(255, 255, 255);
-    border-bottom-left-radius: 13px;
-    border-bottom-right-radius: 13px;
-  }
-  .profileImage {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin-left: 20px;
-    margin-top: 5px;
-  }
-  
-  .searchInputContainer {
-    display: flex;
-    align-items: center;
-    flex: 4;
-    margin-top: 9px;
-    background-color: rgb(229, 232, 235);
-    padding: 5px;
-    border-radius: 10px;
-  }
-  
-  .iconsContainer {
-    display: flex;
-    align-items: center;
-    flex: 0.22;
-  }
-  
-  .logoContainer {
-    flex: 0.2;
-  }
-  
-  .icons {
-    width: 20px;
-    height: 20px;
-    margin-left: 20px;
-  }
-  
-  .searchIcon {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .link {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-  
-  .searchInput {
-    width: 33pc;
-    border: none;
-    padding: 5px;
-    background-color: rgb(229, 232, 235);
-    border-radius: 10px;
-  }
-  
+  display: flex;
+  width: 100%;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+.profileImage {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.searchInputContainer {
+  display: flex;
+  align-items: center;
+  flex: 4;
+  margin-top: 9px;
+  background-color: rgb(229, 232, 235);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.iconsContainer {
+  display: flex;
+  align-items: center;
+  flex: 0.22;
+}
+
+.logoContainer {
+  flex: 0.2;
+}
+
+.icons {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+}
+
+.searchIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.searchInput {
+  width: 33pc;
+  border: none;
+  padding: 5px;
+  background-color: rgb(229, 232, 235);
+  border-radius: 10px;
+}
+
+.navButton {
+  /* background: blue;
+    width: 80px; */
+  text-align: center;
+  margin-left: 50px;
+  /* vertical-align: middle;
+  height: 30px; */
+}

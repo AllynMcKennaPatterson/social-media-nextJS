@@ -24,12 +24,16 @@ function CreatePostModal(props) {
     const enteredContent = contentInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
     const enteredTime = timeInputRef.current.value;
+    let today = new Date();
 
     const postData = {
       username: enteredUsername,
       content: enteredContent,
       image: enteredImage,
-      time: enteredTime,
+      date:
+        today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear(),
+      time:
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
     };
     console.log(postData);
     props.onAddPost(postData);
@@ -46,7 +50,9 @@ function CreatePostModal(props) {
           <div className={classes.postContainer}>
             <h1>Create your post</h1>
             <div className={classes.control}>
-              <label htmlFor="image">Username</label>
+              <label htmlFor="username" style={{ marginRight: "10px" }}>
+                Username
+              </label>
               <input type="text" required id="image" ref={usernameInputRef} />
             </div>
             <div className={classes.content}>
