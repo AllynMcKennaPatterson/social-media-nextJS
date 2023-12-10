@@ -17,23 +17,34 @@ function CreatePostModal(props) {
   const imageInputRef = useRef();
   const timeInputRef = useRef();
 
+  function zeroPad(number) {
+    return number < 10 ? "0" + number : number;
+  }
+
   function submitHandler(event) {
     event.preventDefault();
 
     const enteredUsername = usernameInputRef.current.value;
     const enteredContent = contentInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
-    const enteredTime = timeInputRef.current.value;
     let today = new Date();
 
     const postData = {
-      username: enteredUsername,
-      content: enteredContent,
-      image: enteredImage,
-      date:
-        today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear(),
-      time:
-        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
+      userName: enteredUsername,
+      postText: enteredContent,
+      imgString: enteredImage,
+      dateTimeofUpload:
+        today.getFullYear() +
+        "-" +
+        zeroPad(today.getMonth()) +
+        "-" +
+        zeroPad(today.getDate()) +
+        "T" +
+        zeroPad(today.getHours()) +
+        ":" +
+        zeroPad(today.getMinutes()) +
+        ":" +
+        zeroPad(today.getSeconds()),
     };
     console.log(postData);
     props.onAddPost(postData);
@@ -49,29 +60,48 @@ function CreatePostModal(props) {
         >
           <div className={classes.postContainer}>
             <h1>Create your post</h1>
-            <div className={classes.control}>
-              <label htmlFor="username" style={{ marginRight: "10px" }}>
-                Username
-              </label>
-              <input type="text" required id="image" ref={usernameInputRef} />
-            </div>
             <div className={classes.content}>
-              <label htmlFor="content">Post text</label>
-              <textarea
-                id="description"
-                required
-                rows="5"
-                className={classes.input}
-                ref={contentInputRef}
-              ></textarea>
               <div className={classes.control}>
-                <label htmlFor="image">Meetup Image</label>
-                <input type="url" required id="image" ref={imageInputRef} />
+                <label htmlFor="username" className={classes.label}>
+                  Username
+                </label>
+                <input
+                  type="text"
+                  required
+                  id="username"
+                  ref={usernameInputRef}
+                  className={classes.inputBox}
+                />
               </div>
               <div className={classes.control}>
+                <label htmlFor="content" className={classes.label}>
+                  Post text
+                </label>
+                <input
+                  type="text"
+                  required
+                  id="text"
+                  ref={contentInputRef}
+                  className={classes.inputBox}
+                />
+              </div>
+
+              <div className={classes.control}>
+                <label htmlFor="image" className={classes.label}>
+                  Post Image
+                </label>
+                <input
+                  type="url"
+                  required
+                  id="image"
+                  ref={imageInputRef}
+                  className={classes.inputBox}
+                />
+              </div>
+              {/* <div className={classes.control}>
                 <label htmlFor="image">Time</label>
                 <input type="text" required id="image" ref={timeInputRef} />
-              </div>
+              </div> */}
               <button className={classes.postBtn}>Post</button>
             </div>
           </div>

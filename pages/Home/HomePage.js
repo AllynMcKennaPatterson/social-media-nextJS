@@ -21,7 +21,7 @@ function HomePage() {
 
   if (globalCtx.theGlobalObject.dataLoaded == true) {
     return (
-      <>
+      <div className={classes.componentContainer}>
         <CreatePostModal
           open={openModal}
           onClose={() => setOpenModal(false)}
@@ -29,12 +29,14 @@ function HomePage() {
         />
         <CreatePostBtn setOpenModal={() => setOpenModal(true)} />
         <Header />
-        <HomeFeed posts={globalCtx.theGlobalObject.posts} />
-      </>
+        <div className={classes.componentContainer}>
+          <HomeFeed posts={globalCtx.theGlobalObject.posts} />
+        </div>
+      </div>
     );
   }
   return (
-    <>
+    <div className={classes.home}>
       <CreatePostModal
         open={openModal}
         onClose={() => setOpenModal(false)}
@@ -42,8 +44,10 @@ function HomePage() {
       />
       <CreatePostBtn setOpenModal={() => setOpenModal(true)} />
       <Header />
-      <div>Loading data from database, please wait . . . </div>
-    </>
+      <div className={classes.componentContainer}>
+        <div>Loading data from database, please wait . . . </div>
+      </div>
+    </div>
   );
 
   //Here for testing
