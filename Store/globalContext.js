@@ -56,19 +56,24 @@ export function GlobalContextProvider(props) {
       });
     }
     if (command.cmd == "addPost") {
-      const response = await fetch("../pages/api/new-post", {
+      console.log(command.newVal)
+      const response = await fetch("/api/new-post", {
         method: "POST",
-        body: JSON.stringify(command.newVal),
+        body: command.newVal,
         headers: {
           "Content-Type": "application/json",
         },
       });
       const data = await response.json(); // Should check here that it worked OK
-      setGlobals((previousGlobals) => {
-        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        newGlobals.posts.push(command.newVal);
-        return newGlobals;
-      });
+      console.log(data)
+      // setGlobals((previousGlobals) => {
+      //   const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+      //   console.log(globals.posts)
+      //   console.log(newGlobals.posts)
+      //   newGlobals.posts.push(command.newVal);
+      //   console.log(newGlobals.posts)
+      //   return newGlobals;
+      // });
     }
     // if (command.cmd == "logIn") {
     //     const response = await fetch("../pages/api/log-in", {

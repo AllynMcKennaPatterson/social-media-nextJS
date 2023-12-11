@@ -15,7 +15,7 @@ function HomePage() {
   const globalCtx = useContext(GlobalContext);
 
   async function addPostHandler(enteredPostData) {
-    await globalCtx.updateGlobals({ cmd: "addPost", newVal: enteredPostData });
+    await globalCtx.updateGlobals({ cmd: "addPost", newVal: JSON.stringify(enteredPostData) });
     router.push("/");
   }
 
