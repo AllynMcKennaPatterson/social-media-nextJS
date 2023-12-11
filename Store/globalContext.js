@@ -14,7 +14,7 @@ export function GlobalContextProvider(props) {
     posts: [],
     dataLoaded: false,
     loggedIn: false,
-    currentUser: "",
+    userData: [],
   });
 
   useEffect(() => {
