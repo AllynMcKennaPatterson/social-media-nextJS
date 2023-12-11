@@ -13,6 +13,8 @@ export function GlobalContextProvider(props) {
     hideModal: true,
     posts: [],
     dataLoaded: false,
+    loggedIn: false,
+    currentUser: "",
   });
 
   useEffect(() => {
@@ -64,10 +66,45 @@ export function GlobalContextProvider(props) {
       const data = await response.json(); // Should check here that it worked OK
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        newGlobals.meetings.push(command.newVal);
+        newGlobals.posts.push(command.newVal);
         return newGlobals;
       });
     }
+    // if (command.cmd == "logIn") {
+    //     const response = await fetch("../pages/api/log-in", {
+    //       method: "POST",
+    //       body: JSON.stringify(command.newVal),
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     });
+    //     const data = await response.json(); // Should check here that it worked OK
+    //     setGlobals((previousGlobals) => {
+    //       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+    //       //Check if credentials are valid before setting loggedIn to true
+    //     //   newGlobals.loggedIn = true;
+    //     //   newGlobals.currentUser =
+    //       return newGlobals;
+    //     });
+    //   }
+
+    // if (command.cmd == "signUp") {
+    //     const response = await fetch("../pages/api/sign-up", {
+    //       method: "POST",
+    //       body: JSON.stringify(command.newVal),
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     });
+    //     const data = await response.json(); // Should check here that it worked OK
+    //     setGlobals((previousGlobals) => {
+    //       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+    //       //Check if credentials are valid before setting loggedIn to true
+    //     //   newGlobals.loggedIn = true;
+    //     //   newGlobals.currentUser =
+    //       return newGlobals;
+    //     });
+    //   }
   }
 
   const context = {
