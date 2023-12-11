@@ -56,7 +56,7 @@ export function GlobalContextProvider(props) {
       });
     }
     if (command.cmd == "addPost") {
-      const response = await fetch("../pages/api/new-post", {
+      const response = await fetch("/api/new-post", {
         method: "POST",
         body: JSON.stringify(command.newVal),
         headers: {
