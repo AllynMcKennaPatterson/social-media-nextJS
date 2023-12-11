@@ -30,7 +30,7 @@ function CreatePostModal(props) {
 
     const postData = {
       userName: enteredUsername,
-      postText: enteredContent,
+      // postText: enteredContent,
       imgString: enteredImage,
       dateTimeofUpload:
         today.getFullYear() +

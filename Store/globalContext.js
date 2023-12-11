@@ -56,6 +56,7 @@ export function GlobalContextProvider(props) {
       });
     }
     if (command.cmd == "addPost") {
+      console.log(command.newVal);
       const response = await fetch("../pages/api/new-post", {
         method: "POST",
         body: JSON.stringify(command.newVal),
@@ -63,7 +64,9 @@ export function GlobalContextProvider(props) {
           "Content-Type": "application/json",
         },
       });
-      const data = await response.json(); // Should check here that it worked OK
+      console.log("Test");
+      const data = await response.json(); // data might be problem
+      console.log(data);
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
         newGlobals.posts.push(command.newVal);
