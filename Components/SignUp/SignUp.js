@@ -5,17 +5,20 @@ function SignUp(props) {
     const emailInputRef = useRef();
     const usernameInputRef = useRef();
     const passwordInputRef = useRef();
+    const profilePicInputRef = useRef();
 
     function signUpHandler(event) {
         event.preventDefault();
         const enteredEmail = emailInputRef.current.value;
         const enteredUsername = usernameInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
+        const enteredProfilePic = profilePicInputRef.current.value;
     
         const signUpData = {
           email: enteredEmail,
           userName: enteredUsername,
           password: enteredPassword,
+          profilePic: enteredProfilePic,
         };
         console.log(signUpData);
         props.onSignUp(signUpData);
@@ -62,6 +65,18 @@ function SignUp(props) {
                   className={classes.inputBox}
                 />
                 </div>
+                <div className={classes.control}>
+                <label htmlFor="image" className={classes.label}>
+                  Profile Picture
+                </label>
+                <input
+                  type="url"
+                  required
+                  id="image"
+                  ref={profilePicInputRef}
+                  className={classes.inputBox}
+                />
+              </div>
               <div>
               <button className={classes.postBtn}>Create account</button>
               </div>
