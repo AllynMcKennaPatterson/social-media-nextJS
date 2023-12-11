@@ -1,0 +1,80 @@
+.profileContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.postContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  margin-top: 5%;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.input {
+  width: 100%;
+  resize: none;
+  border-radius: 10px;
+}
+
+.postBtn {
+  padding-left: 25px;
+  background-color: #aaaaaa;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  margin: 10px 10px;
+  width: 200px;
+}
+
+.postBtn:hover {
+  background-color: #949494;
+}
+
+.label{
+  display: flex;
+  margin-right: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  height: 20px;
+  width: 100px;
+}
+
+.control{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:flex-start;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom:20px;
+}
+
+.inputBox{
+  width: 400px;
+  height: 20px;
+}
+

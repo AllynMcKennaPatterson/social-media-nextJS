@@ -73,3 +73,10 @@
   /* vertical-align: middle;
   height: 30px; */
 }
+
+.logIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0.25;
+}
