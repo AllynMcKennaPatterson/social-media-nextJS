@@ -1,3 +1,5 @@
+import { AiOutlineConsoleSql } from "react-icons/ai";
+
 async function handler(req, res) {
   console.log("Posting data to database");
   const response = await fetch("http://localhost:8081/post", {
@@ -8,6 +10,7 @@ async function handler(req, res) {
     },
   });
   const data = await response.json();
+  console.log(JSON.stringify(data))
   res.json(data);
 }
 
