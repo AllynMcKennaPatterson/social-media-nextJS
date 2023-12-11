@@ -4,6 +4,7 @@ import GlobalContext from "@/Store/globalContext";
 import { useContext } from "react";
 
 import Header from "@/Components/Header/Header";
+import Link from "next/link";
 
 function LogIn(props) {
     const usernameInputRef = useRef();
@@ -52,7 +53,9 @@ function LogIn(props) {
                 </div>
               <div>
                 <button className={classes.postBtn}>Log in</button>
-              <button className={classes.postBtn}>Create account</button>
+                <Link className={classes.link} href="/SignUp">
+                <button className={classes.postBtn}>Create account</button>
+          </Link>
               </div>
               
             </div>
