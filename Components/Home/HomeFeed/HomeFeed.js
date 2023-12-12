@@ -6,6 +6,7 @@ import classes from "./HomeFeed.module.css";
 
 // import Link from "next/link";
 import Post from "../Post/Post";
+import Card from "@/Components/Card/Card";
 // import PostContent from "../PostContent/PostContent";
 // import CreatePostModal from "@/Components/CreatePostModal/CreatePostModal";
 
@@ -14,7 +15,8 @@ function HomeFeed(props) {
     <div className={classes.mainPostContainer}>
       <ul className={classes.list}>
         {props.posts.map((post) => (
-          <Post
+          <Card>
+            <Post
             // key={meetup.meetingId}
             username={post.userName}
             image={post.imgString}
@@ -23,6 +25,7 @@ function HomeFeed(props) {
           // title={post.title}
           // address={post.address}
           />
+          </Card>
         ))}
       </ul>
     </div>

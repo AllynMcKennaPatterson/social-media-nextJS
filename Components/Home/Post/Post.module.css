@@ -27,7 +27,8 @@
     height:400px;
     margin-top: 10px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
   
   .postIcon {
@@ -60,7 +61,7 @@
     align-items: flex-start;
     justify-content: center;
     padding-bottom: 50px;
-    max-width: 420px;
+    max-width: 400px;
   }
 
   .username{
