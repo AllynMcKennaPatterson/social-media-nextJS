@@ -29,10 +29,13 @@ function HomePage() {
           onAddPost={addPostHandler}
         />
         <CreatePostBtn setOpenModal={() => setOpenModal(true)} />
-        <Header />
+        <div className={classes.layers}>
+          <Header />
         <div className={classes.componentContainer}>
           <HomeFeed posts={globalCtx.theGlobalObject.posts} />
         </div>
+        </div>
+        
       </div>
     );
   }

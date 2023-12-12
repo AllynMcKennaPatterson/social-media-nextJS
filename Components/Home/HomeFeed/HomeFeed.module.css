@@ -1,3 +1,12 @@
 .mainPostContainer{
     flex: 3;
+    
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+    justify-content: center;
 }
