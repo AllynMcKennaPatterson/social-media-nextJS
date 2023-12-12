@@ -1,6 +1,6 @@
 async function handler(req, res) {
   console.log("Posting data to database");
-  const response = await fetch("http://localhost:8081/signUp", {
+  const response = await fetch("http://localhost:8081/signup", {
     method: "POST",
     body: JSON.stringify(req.body),
     headers: {

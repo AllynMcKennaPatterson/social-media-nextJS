@@ -4,6 +4,7 @@
 // - makes debugging etc so much easier
 // - all external connections still have to go through /api routes
 
+import { comma } from "postcss/lib/list";
 import { createContext, useState, useEffect } from "react";
 
 const GlobalContext = createContext();
@@ -12,7 +13,7 @@ export function GlobalContextProvider(props) {
   const [globals, setGlobals] = useState({
     hideModal: true, posts: [], meetings: [],
     loggedIn: false,
-    userData: [],
+    currentUser: null,
   });
 
   useEffect(() => {
@@ -74,41 +75,49 @@ export function GlobalContextProvider(props) {
         return newGlobals;
       });
     }
-    // if (command.cmd == "logIn") {
-    //     const response = await fetch("../pages/api/log-in", {
-    //       method: "POST",
-    //       body: JSON.stringify(command.newVal),
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     });
-    //     const data = await response.json(); // Should check here that it worked OK
-    //     setGlobals((previousGlobals) => {
-    //       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-    //       //Check if credentials are valid before setting loggedIn to true
-    //     //   newGlobals.loggedIn = true;
-    //     //   newGlobals.currentUser =
-    //       return newGlobals;
-    //     });
-    //   }
 
-    // if (command.cmd == "signUp") {
-    //     const response = await fetch("../pages/api/sign-up", {
-    //       method: "POST",
-    //       body: JSON.stringify(command.newVal),
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     });
-    //     const data = await response.json(); // Should check here that it worked OK
-    //     setGlobals((previousGlobals) => {
-    //       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-    //       //Check if credentials are valid before setting loggedIn to true
-    //     //   newGlobals.loggedIn = true;
-    //     //   newGlobals.currentUser =
-    //       return newGlobals;
-    //     });
-    //   }
+    if (command.cmd == "logIn") {
+      const response = await fetch("/api/log-in", {
+        method: "POST",
+        body: JSON.stringify(command.newVal),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json(); // Should check here that it worked OK
+      console.log(data)
+      setGlobals((previousGlobals) => {
+        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+        // Check if credentials are valid before setting loggedIn to true
+        if (data.Login == true) {
+          newGlobals.loggedIn = true;
+          newGlobals.currentUser = command.newVal.username
+          console.log("changed globals after login")
+          }
+        return newGlobals;
+      });
+    }
+
+    if (command.cmd == "signUp") {
+      console.log(command.newVal)
+      const response = await fetch("/api/sign-up", {
+        method: "POST",
+        body: JSON.stringify(command.newVal),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json(); // Should check here that it worked OK
+      console.log("Signup status:", data)
+      setGlobals((previousGlobals) => {
+        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+        // Check if credentials are valid before setting loggedIn to true
+        console.log("signed in")
+        newGlobals.loggedIn = true
+        newGlobals.currentUser = command.newVal.username
+        return newGlobals;
+      })
+    }
   }
 
   const context = {
