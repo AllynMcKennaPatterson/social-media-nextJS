@@ -16,7 +16,7 @@ function Header() {
       <div className={classes.mainNavbar}>
         <div className={classes.logoContainer}>
           <Link className={classes.link} href="/">
-            <p style={{ color: "#33024d" }}>Home</p>
+            <p className={classes.buttonText}>Home</p>
           </Link>
         </div>
         <div>
@@ -41,22 +41,17 @@ function Header() {
       <div className={classes.mainNavbar}>
         <div className={classes.logoContainer}>
           <Link className={classes.link} href="/">
-            <p style={{ color: "#33024d" }}>Home</p>
+            <p className={classes.buttonText}>Home</p>
           </Link>
         </div>
         <div>
         </div>
         <div className={classes.logIn}>
           <Link className={classes.link} href="/LogIn">
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <p style={{ marginLeft: "5px", color: "#33024d" }}>Log In</p>
-            </div>
+              <p className={classes.buttonText}>Log In</p>
           </Link>
-          <h2> | </h2>
           <Link className={classes.link} href="/SignUp">
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <p style={{ marginLeft: "5px", color: "#33024d" }}>Sign Up</p>
-            </div>
+              <p className={classes.buttonText}>Sign Up</p>
           </Link>
         </div>
       </div>
