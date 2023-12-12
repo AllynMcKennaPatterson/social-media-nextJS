@@ -85,13 +85,17 @@ export function GlobalContextProvider(props) {
         },
       });
       const data = await response.json(); // Should check here that it worked OK
-      console.log(data)
+      // console.log({data.username,data.profilepic})
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
         // Check if credentials are valid before setting loggedIn to true
-        if (data.Login == true) {
+        if (data !== null) {
+          // console.log(data)
           newGlobals.loggedIn = true;
-          newGlobals.currentUser = command.newVal.username
+          // let {username,profilepic} = data
+          const newUser = {username,profilepic}
+          console.log(JSON.stringify(newUser))
+          newGlobals.currentUser = newUser
           console.log("changed globals after login")
         }
         return newGlobals;
@@ -115,10 +119,12 @@ export function GlobalContextProvider(props) {
         console.log("signed in")
         if (data.Signup === true) {
           newGlobals.loggedIn = true
-          newGlobals.currentUser = command.newVal
+          let {username, profilepic} = command.newVal
+          let newUser = {username, profilepic}
+          newGlobals.currentUser = newUser
         }
         // verify that currentUser object is being updated
-        // console.log(newGlobals.currentUser)
+        console.log(newGlobals.currentUser)
         return newGlobals;
       })
     }
