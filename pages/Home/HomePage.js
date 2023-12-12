@@ -15,7 +15,8 @@ function HomePage() {
   const globalCtx = useContext(GlobalContext);
 
   async function addPostHandler(enteredPostData) {
-    await globalCtx.updateGlobals({ cmd: "addPost", newVal: JSON.stringify(enteredPostData) });
+    // await globalCtx.updateGlobals({ cmd: "addPost", newVal: JSON.stringify(enteredPostData) });
+    await globalCtx.updateGlobals({ cmd: "addPost", newVal: enteredPostData });
     router.push("/");
   }
 
@@ -35,20 +36,23 @@ function HomePage() {
       </div>
     );
   }
-  return (
-    <div className={classes.home}>
-      <CreatePostModal
-        open={openModal}
-        onClose={() => setOpenModal(false)}
-        onAddPost={addPostHandler}
-      />
-      <CreatePostBtn setOpenModal={() => setOpenModal(true)} />
-      <Header />
-      <div className={classes.componentContainer}>
-        <div>Loading data from database, please wait . . . </div>
+  else {
+    return (
+      <div className={classes.home}>
+        <CreatePostModal
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+          onAddPost={addPostHandler}
+        />
+        <CreatePostBtn setOpenModal={() => setOpenModal(true)} />
+        <Header />
+        <div className={classes.componentContainer}>
+          <div>Loading data from database, please wait . . . </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
 
   //Here for testing
   //   return (
