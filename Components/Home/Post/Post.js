@@ -11,7 +11,7 @@ function Post(props) {
 
   return (
     <li className={classes.item}>
-      <div className={classes.content}>
+      <div className={classes.username}>
         <h3>{props.username}</h3>
       </div>
       <div className={classes.postImage}>
