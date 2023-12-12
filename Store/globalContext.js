@@ -11,7 +11,7 @@ const GlobalContext = createContext();
 export function GlobalContextProvider(props) {
   const [globals, setGlobals] = useState({
     hideModal: true,
-    posts: [],
+    posts: undefined,
     dataLoaded: false,
     loggedIn: false,
     userData: [],
@@ -23,13 +23,14 @@ export function GlobalContextProvider(props) {
 
   async function getAllPosts() {
     const response = await fetch("/api/get-posts", {
-      method: "POST",
-      body: JSON.stringify({ posts: "all" }),
+      method: "GET",
+      // body: JSON.stringify({ posts: "all" }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    let data = await response.json();
+    const data = await response.json();
+    console.log(data)
     setGlobals((previousGlobals) => {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.posts = data.posts;
@@ -37,6 +38,7 @@ export function GlobalContextProvider(props) {
         newGlobals.dataLoaded = false;
       } else {
         newGlobals.dataLoaded = true;
+        console.log(newGlobals.posts  )
       }
       return newGlobals;
     });
@@ -66,14 +68,14 @@ export function GlobalContextProvider(props) {
       });
       const data = await response.json(); // Should check here that it worked OK
       console.log(data)
-      // setGlobals((previousGlobals) => {
-      //   const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-      //   console.log(globals.posts)
-      //   console.log(newGlobals.posts)
-      //   newGlobals.posts.push(command.newVal);
-      //   console.log(newGlobals.posts)
-      //   return newGlobals;
-      // });
+      setGlobals((previousGlobals) => {
+        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+        console.log(globals.posts)
+        console.log(newGlobals.posts)
+        newGlobals.posts.push(JSON.stringify(command.newVal))
+        console.log(newGlobals.posts)
+        return newGlobals;
+      });
     }
     // if (command.cmd == "logIn") {
     //     const response = await fetch("../pages/api/log-in", {
