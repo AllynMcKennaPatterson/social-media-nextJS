@@ -14,7 +14,7 @@ function Post(props) {
       <div className={classes.content}>
         <h3>{props.username}</h3>
       </div>
-      <div className={classes.image}>
+      <div className={classes.postImage}>
         <img src={props.image} alt={props.username} />
       </div>
       <div className={classes.content}>
