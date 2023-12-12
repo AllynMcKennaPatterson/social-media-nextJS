@@ -18,10 +18,10 @@ function HomeFeed(props) {
             // key={meetup.meetingId}
             username={post.userName}
             image={post.imgString}
-            // content={post.}
+          // content={post.}
 
-            // title={post.title}
-            // address={post.address}
+          // title={post.title}
+          // address={post.address}
           />
         ))}
       </ul>

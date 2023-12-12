@@ -16,7 +16,7 @@ function LogIn(props) {
         const enteredPassword = passwordInputRef.current.value;
     
         const logInData = {
-          userName: enteredUsername,
+          username: enteredUsername,
           password: enteredPassword,
         };
         console.log(logInData);

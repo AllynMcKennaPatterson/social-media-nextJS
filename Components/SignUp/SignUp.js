@@ -1,11 +1,13 @@
+import GlobalContext from "@/Store/globalContext";
 import classes from "./SignUp.module.css";
-import { useRef } from "react";
+import { useRef , useContext } from "react"
 
 function SignUp(props) {
     const emailInputRef = useRef();
     const usernameInputRef = useRef();
     const passwordInputRef = useRef();
     const profilePicInputRef = useRef();
+    const globalCtx = useContext(GlobalContext)
 
     function signUpHandler(event) {
         event.preventDefault();
@@ -16,7 +18,7 @@ function SignUp(props) {
     
         const signUpData = {
           email: enteredEmail,
-          userName: enteredUsername,
+          username: enteredUsername,
           password: enteredPassword,
           profilePic: enteredProfilePic,
         };
