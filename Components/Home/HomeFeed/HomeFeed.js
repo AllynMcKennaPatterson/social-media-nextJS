@@ -11,6 +11,7 @@ import Card from "@/Components/Card/Card";
 // import CreatePostModal from "@/Components/CreatePostModal/CreatePostModal";
 
 function HomeFeed(props) {
+  // console.log(props.post);
   return (
     <div className={classes.mainPostContainer}>
       <ul className={classes.list}>
@@ -20,7 +21,7 @@ function HomeFeed(props) {
             // key={meetup.meetingId}
             username={post.userName}
             image={post.imgString}
-          // content={post.}
+            text={post.postText}
 
           // title={post.title}
           // address={post.address}

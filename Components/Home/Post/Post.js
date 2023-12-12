@@ -17,8 +17,9 @@ function Post(props) {
       <div className={classes.postImage}>
         <img src={props.image} alt={props.username} />
       </div>
-      <div className={classes.content}>
-        <p>{props.content}</p>
+      <div className={classes.caption}>
+        <h4 style={{marginRight:'5px'}}>{props.username}:</h4>
+        <p>{props.text}</p>
       </div>
       {/* <div className={classes.actions}>
           <button onClick={showDetailsHandler}>Show Details</button>

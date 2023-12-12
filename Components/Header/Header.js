@@ -23,14 +23,12 @@ function Header() {
         </div>
         <div className={classes.iconsContainer}>
           <IconContext.Provider
-            value={{ color: "#33024d", size: "30px", marginRight: "5px" }}
+            value={{ color: "#000", size: "30px", marginRight: "5px" }}
           >
             <FaUser />
           </IconContext.Provider>
           <Link className={classes.link} href="/Profile">
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <p style={{ marginLeft: "5px", color: "#33024d" }}>My Profile</p>
-            </div>
+              <p className={classes.buttonText}>My Profile</p>
           </Link>
         </div>
       </div>
