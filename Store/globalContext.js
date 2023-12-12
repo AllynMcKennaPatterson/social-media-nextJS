@@ -36,7 +36,7 @@ export function GlobalContextProvider(props) {
         newGlobals.dataLoaded = false;
       } else {
         newGlobals.dataLoaded = true;
-        console.log("All posts from database: ", JSON.stringify(newGlobals.posts))
+        // console.log("All posts from database: ", JSON.stringify(newGlobals.posts))
       }
       return newGlobals;
     });
@@ -93,7 +93,7 @@ export function GlobalContextProvider(props) {
           newGlobals.loggedIn = true;
           newGlobals.currentUser = command.newVal.username
           console.log("changed globals after login")
-          }
+        }
         return newGlobals;
       });
     }
@@ -113,8 +113,12 @@ export function GlobalContextProvider(props) {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
         // Check if credentials are valid before setting loggedIn to true
         console.log("signed in")
-        newGlobals.loggedIn = true
-        newGlobals.currentUser = command.newVal.username
+        if (data.Signup === true) {
+          newGlobals.loggedIn = true
+          newGlobals.currentUser = command.newVal
+        }
+        // verify that currentUser object is being updated
+        // console.log(newGlobals.currentUser)
         return newGlobals;
       })
     }
