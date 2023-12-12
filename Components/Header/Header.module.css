@@ -55,6 +55,18 @@
   text-decoration: none;
   color: black;
   font-weight: bold;
+  background-color: #a0a0a0;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  margin: 10px 10px;
+  width: 70px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .searchInput {
@@ -79,4 +91,9 @@
   align-items: center;
   justify-content: center;
   flex: 0.25;
+}
+
+.buttonText{
+  margin: 0;
+  padding: 0;
 }

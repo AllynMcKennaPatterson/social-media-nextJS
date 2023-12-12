@@ -6,10 +6,11 @@ import { useContext } from "react";
 import Header from "@/Components/Header/Header";
 import LogIn from "@/Components/LogIn/LogIn";
 import { useRouter } from "next/navigation";
+import Card from "@/Components/Card/Card";
 
 function LogInPage(props) {
-    const router = useRouter();
-    const globalCtx = useContext(GlobalContext);
+  const router = useRouter();
+  const globalCtx = useContext(GlobalContext);
 
   async function logInHandler(enteredPostData) {
     await globalCtx.updateGlobals({ cmd: "logIn", newVal: enteredPostData });
@@ -17,13 +18,18 @@ function LogInPage(props) {
   }
 
   return (
-    
-    <div className={classes.profileContainer}>
+
+    <div>
       <Header />
-        <LogIn
+      <div className={classes.container}>
+        <Card className={classes.card}>
+          <LogIn
             onLogIn={logInHandler}
-        />
+          />
+        </Card>
+      </div>
     </div>
+
   );
 }
 
