@@ -9,11 +9,8 @@ import { createContext, useState, useEffect } from "react";
 const GlobalContext = createContext();
 
 export function GlobalContextProvider(props) {
-  const [globals, setGlobals] = useState({
-    hideModal: true,
-    posts: undefined,
-    dataLoaded: false,
-    loggedIn: false,
+  const [globals, setGlobals] = useState({hideModal: true, posts: [], meetings: [],
+    loggedIn: false, 
     userData: [],
   });
 
@@ -30,15 +27,14 @@ export function GlobalContextProvider(props) {
       },
     });
     const data = await response.json();
-    console.log(data)
     setGlobals((previousGlobals) => {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-      newGlobals.posts = data.posts;
+      newGlobals.posts = data
       if (newGlobals.posts === undefined) {
         newGlobals.dataLoaded = false;
       } else {
         newGlobals.dataLoaded = true;
-        console.log(newGlobals.posts  )
+      console.log("All posts from database: ",JSON.stringify(newGlobals.posts))
       }
       return newGlobals;
     });
@@ -61,18 +57,18 @@ export function GlobalContextProvider(props) {
       console.log(command.newVal)
       const response = await fetch("/api/new-post", {
         method: "POST",
-        body: command.newVal,
+        body: JSON.stringify(command.newVal),
         headers: {
           "Content-Type": "application/json",
         },
       });
       const data = await response.json(); // Should check here that it worked OK
-      console.log(data)
+      // console.log(data)
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        console.log(globals.posts)
-        console.log(newGlobals.posts)
-        newGlobals.posts.push(JSON.stringify(command.newVal))
+        // console.log(JSON.stringify(globals.posts))
+        // console.log(JSON.stringify(newGlobals.posts))
+        newGlobals.posts.push(command.newVal)
         console.log(newGlobals.posts)
         return newGlobals;
       });
@@ -117,7 +113,7 @@ export function GlobalContextProvider(props) {
   const context = {
     updateGlobals: editGlobalData,
     theGlobalObject: globals,
-  };
+  }
 
   return (
     <GlobalContext.Provider value={context}>
