@@ -6,10 +6,11 @@ import { useContext } from "react";
 import Header from "@/Components/Header/Header";
 import { useRouter } from "next/navigation";
 import SignUp from "@/Components/SignUp/SignUp";
+import Card from "@/Components/Card/Card";
 
 function SignUpPage(props) {
-    const router = useRouter();
-    const globalCtx = useContext(GlobalContext);
+  const router = useRouter();
+  const globalCtx = useContext(GlobalContext);
 
   async function signUpHandler(enteredPostData) {
     await globalCtx.updateGlobals({ cmd: "signUp", newVal: enteredPostData });
@@ -17,13 +18,18 @@ function SignUpPage(props) {
   }
 
   return (
-    
-    <div className={classes.profileContainer}>
+
+    <div>
       <Header />
-        <SignUp
-            onSignUp={signUpHandler}
+      <div className={classes.container}>
+        <Card>
+          <SignUp
+          onSignUp={signUpHandler}
         />
+        </Card>
+      </div>
     </div>
+
   );
 }
 
