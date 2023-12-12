@@ -9,8 +9,9 @@ import { createContext, useState, useEffect } from "react";
 const GlobalContext = createContext();
 
 export function GlobalContextProvider(props) {
-  const [globals, setGlobals] = useState({hideModal: true, posts: [], meetings: [],
-    loggedIn: false, 
+  const [globals, setGlobals] = useState({
+    hideModal: true, posts: [], meetings: [],
+    loggedIn: false,
     userData: [],
   });
 
@@ -34,7 +35,7 @@ export function GlobalContextProvider(props) {
         newGlobals.dataLoaded = false;
       } else {
         newGlobals.dataLoaded = true;
-      console.log("All posts from database: ",JSON.stringify(newGlobals.posts))
+        console.log("All posts from database: ", JSON.stringify(newGlobals.posts))
       }
       return newGlobals;
     });
