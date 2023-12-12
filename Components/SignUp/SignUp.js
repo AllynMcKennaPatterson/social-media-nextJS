@@ -20,7 +20,7 @@ function SignUp(props) {
           email: enteredEmail,
           username: enteredUsername,
           password: enteredPassword,
-          profilePic: enteredProfilePic,
+          profilepic: enteredProfilePic,
         };
         console.log(signUpData);
         props.onSignUp(signUpData);
