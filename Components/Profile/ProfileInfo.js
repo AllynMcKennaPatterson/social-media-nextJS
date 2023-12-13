@@ -1,15 +1,21 @@
+// import Card from "../ui/Card";
+import classes from "./ProfileInfo.module.css";
+// import { useRouter } from "next/router";
 
-import classes from "./Post.module.css";
+function ProfileInfo(props) {
+  //   const router = useRouter();
 
-function Post(props) {
+  //   function showDetailsHandler() {
+  //     router.push("/" + props.id);
+  //   }
 
   return (
     <li className={classes.item}>
       <div className={classes.username}>
-        <h3>{props.username}</h3>
+        <h3>test</h3>
       </div>
       <div className={classes.postImage}>
-        <img src={props.image} alt={props.username} />
+        <img src={props.pro} alt={props.username} />
       </div>
       <div className={classes.caption}>
         <h4 style={{marginRight:'5px'}}>{props.username}:</h4>
@@ -22,4 +28,4 @@ function Post(props) {
   );
 }
 
-export default Post;
+export default ProfileInfo;

@@ -6,11 +6,13 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { useRef } from "react";
 import classes from "./CreatPostModal.module.css";
+import GlobalContext from "@/Store/globalContext";
 
 // import Link from "next/link";
 // import ImgUpload from "../ImgUpload/ImgUpload";
 
 function CreatePostModal(props) {
+  const globalctx = useContext(GlobalContext)
   if (!props.open) return null;
   const usernameInputRef = useRef();
   const contentInputRef = useRef();
@@ -23,7 +25,9 @@ function CreatePostModal(props) {
   function submitHandler(event) {
     event.preventDefault();
 
-    const enteredUsername = usernameInputRef.current.value;
+    let currUser = JSON.parse(globalctx.theGlobalObject.currentUser)
+    
+    const enteredUsername = currUser.username
     const enteredContent = contentInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
     let today = new Date();
@@ -60,7 +64,7 @@ function CreatePostModal(props) {
           <div className={classes.postContainer}>
             <h1>Create your post</h1>
             <div className={classes.content}>
-              <div className={classes.control}>
+              {/* <div className={classes.control}>
                 <label htmlFor="username" className={classes.label}>
                   Username
                 </label>
@@ -71,7 +75,7 @@ function CreatePostModal(props) {
                   ref={usernameInputRef}
                   className={classes.inputBox}
                 />
-              </div>
+              </div> */}
               <div className={classes.control}>
                 <label htmlFor="content" className={classes.label}>
                   Post text
