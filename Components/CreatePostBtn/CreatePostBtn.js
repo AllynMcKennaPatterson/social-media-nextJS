@@ -4,19 +4,27 @@
 import classes from "./CreatePostBtn.module.css";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
+import Link from "next/link";
 
 export default function CreatePostBtn(props) {
-  return (
-    <div className={classes.mainDiv} onClick={() => props.setOpenModal(true)}>
-      <span className={classes.mainSpan}>
-        <IconContext.Provider
-          value={{
-            color: "#000",
-          }}
-        >
-          <AiFillPlusCircle />
-        </IconContext.Provider>
-      </span>
-    </div>
-  );
+  if (props.isLoggedIn != true) {
+    return (
+      <Link href="/LogIn">
+      <div className={classes.mainDiv}>
+          
+        <Link className={classes.link} href="/LogIn">
+            <p className={classes.buttonText}>Create a Post</p>
+          </Link>
+      </div>
+      </Link>
+    );
+  } else {
+    return (
+      <div className={classes.mainDiv} onClick={() => props.setOpenModal(true)}>
+        <Link className={classes.link} href="/">
+            <p className={classes.buttonText}>Create a Post</p>
+          </Link>
+      </div>
+    );
+  }
 }
