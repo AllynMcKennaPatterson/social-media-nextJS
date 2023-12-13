@@ -93,9 +93,9 @@ export function GlobalContextProvider(props) {
           // console.log(data)
           newGlobals.loggedIn = true;
           // let {username,profilepic} = data
-          const newUser = {username,profilepic}
-          console.log(JSON.stringify(newUser))
-          newGlobals.currentUser = newUser
+          // const newUser = {username,profilepic}
+          // console.log(JSON.stringify(newUser))
+          // newGlobals.currentUser = newUser
           console.log("changed globals after login")
         }
         return newGlobals;

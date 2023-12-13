@@ -10,8 +10,8 @@ export default function CreatePostBtn(props) {
   if (props.isLoggedIn != true) {
     return (
       <div className={classes.mainDiv}>
-        <Link className={classes.link} href="/LogIn">
-            <p className={classes.buttonText}>Create a Post</p>
+        <Link className={classes.linkAlt} href="/LogIn">
+            <p className={classes.buttonText}>Log In to Create a Post</p>
           </Link>
       </div>
     );

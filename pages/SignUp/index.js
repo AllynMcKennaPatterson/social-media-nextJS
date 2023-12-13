@@ -1,4 +1,4 @@
-import classes from "./LogIn.module.css";
+import classes from "./SignUp.module.css";
 import { useRef } from "react";
 import GlobalContext from "@/Store/globalContext";
 import { useContext } from "react";

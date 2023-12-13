@@ -1,38 +1,68 @@
 .mainDiv {
-    margin: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 50%;
-    right: 100px;
-    bottom: 100px;
-    position: fixed;
-    z-index: 30;
-  }
-  
-  /* .mainSpan {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 50%;
+  right: 100px;
+  bottom: 100px;
+  position: fixed;
+  z-index: 30;
+}
+
+/* .mainSpan {
     background: transparent;
     text-align: center;
     font-size: 80px;
   } */
-  .link {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    background-color: #aaa;
-    padding:30px 30px;
-    /* padding-left: 25px;
+.link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  background: rgb(6, 0, 105);
+  background: linear-gradient(
+    0deg,
+    rgba(6, 0, 105, 1) 0%,
+    rgba(0, 153, 193, 1) 100%
+  );
+  padding: 30px 30px;
+  /* padding-left: 25px;
     padding-right: 25px;
     padding-top: 10px;
     padding-bottom: 10px; */
-    border-radius: 15px;
-    border: none;
-    cursor: pointer;
-    margin: 10px 10px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  .buttonText{
-    margin: 0;
-    padding: 0;
-  }
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  margin: 10px 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgb(1, 43, 107);
+}
+.link:hover {
+  transform: scale(1.05);
+}
+
+.linkAlt{
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  background: rgb(87,0,0);
+background: linear-gradient(0deg, rgba(87,0,0,1) 0%, rgba(255,106,0,1) 100%);
+  padding: 30px 30px;
+  /* padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px; */
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  margin: 10px 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgb(1, 43, 107);
+}
+.linkAlt:hover {
+  transform: scale(1.05);
+}
+.buttonText {
+  margin: 0;
+  padding: 0;
+}
