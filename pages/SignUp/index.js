@@ -18,18 +18,14 @@ function SignUpPage(props) {
   }
 
   return (
-
     <div>
       <Header />
       <div className={classes.container}>
         <Card>
-          <SignUp
-          onSignUp={signUpHandler}
-        />
+          <SignUp onSignUp={signUpHandler} />
         </Card>
       </div>
     </div>
-
   );
 }
 

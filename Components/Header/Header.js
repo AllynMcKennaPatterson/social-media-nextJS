@@ -20,6 +20,13 @@ function Header() {
           </Link>
         </div>
         <div>
+          <div className={classes.logoContainer}>
+            <img
+              src="assets/images/logo.png"
+              alt="picSync logo"
+              className={classes.logo}
+            />
+          </div>
         </div>
         <div className={classes.iconsContainer}>
           <IconContext.Provider
@@ -28,13 +35,12 @@ function Header() {
             <FaUser />
           </IconContext.Provider>
           <Link className={classes.link} href="/Profile">
-              <p className={classes.buttonText}>My Profile</p>
+            <p className={classes.buttonText}>My Profile</p>
           </Link>
         </div>
       </div>
     );
-  }
-  else{
+  } else {
     return (
       <div className={classes.mainNavbar}>
         <div className={classes.logoContainer}>
@@ -43,13 +49,20 @@ function Header() {
           </Link>
         </div>
         <div>
+          <div className={classes.logoContainer}>
+            <img
+              src="assets/images/logo.png"
+              alt="picSync logo"
+              className={classes.logo}
+            />
+          </div>
         </div>
         <div className={classes.logIn}>
           <Link className={classes.link} href="/LogIn">
-              <p className={classes.buttonText}>Log In</p>
+            <p className={classes.buttonText}>Log In</p>
           </Link>
           <Link className={classes.link} href="/SignUp">
-              <p className={classes.buttonText}>Sign Up</p>
+            <p className={classes.buttonText}>Sign Up</p>
           </Link>
         </div>
       </div>

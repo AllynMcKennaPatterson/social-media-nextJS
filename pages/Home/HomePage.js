@@ -27,20 +27,20 @@ function HomePage() {
           open={openModal}
           onClose={() => setOpenModal(false)}
           onAddPost={addPostHandler}
-          
         />
-        <CreatePostBtn setOpenModal={() => setOpenModal(true)} isLoggedIn = {globalCtx.theGlobalObject.loggedIn}/>
+        <CreatePostBtn
+          setOpenModal={() => setOpenModal(true)}
+          isLoggedIn={globalCtx.theGlobalObject.loggedIn}
+        />
         <div className={classes.layers}>
           <Header />
-        <div className={classes.componentContainer}>
-          <HomeFeed posts={globalCtx.theGlobalObject.posts} />
+          <div className={classes.componentContainer}>
+            <HomeFeed posts={globalCtx.theGlobalObject.posts} />
+          </div>
         </div>
-        </div>
-        
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <div className={classes.home}>
         <CreatePostModal
@@ -56,7 +56,6 @@ function HomePage() {
       </div>
     );
   }
-
 
   //Here for testing
   //   return (
