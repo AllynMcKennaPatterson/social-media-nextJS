@@ -5,8 +5,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  border-bottom-left-radius: 13px;
-  border-bottom-right-radius: 13px;
+  border-bottom: 5px solid rgb(14, 0, 78);
 }
 .profileImage {
   width: 25px;
@@ -53,9 +52,14 @@
 
 .link {
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
   font-weight: bold;
-  background-color: #a0a0a0;
+  background: rgb(6, 0, 105);
+  background: linear-gradient(
+    0deg,
+    rgba(6, 0, 105, 1) 0%,
+    rgba(0, 153, 193, 1) 100%
+  );
   padding-left: 25px;
   padding-right: 25px;
   padding-top: 10px;
@@ -65,7 +69,16 @@
   cursor: pointer;
   margin: 10px 10px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+
+}
+.link:hover {
+  transform: scale(1.05);
+}
+
+.message{
+  color: #120b6e;
+  margin:0px 0px 0px 10px;
 }
 
 .searchInput {

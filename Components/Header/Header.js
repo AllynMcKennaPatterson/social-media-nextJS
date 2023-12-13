@@ -8,7 +8,7 @@ import GlobalContext from "@/Store/globalContext";
 import Link from "next/link";
 import { IconContext } from "react-icons";
 
-function Header() {
+function Header(props) {
   const globalCtx = useContext(GlobalContext);
 
   if (globalCtx.theGlobalObject.loggedIn == true) {
@@ -30,13 +30,14 @@ function Header() {
         </div>
         <div className={classes.iconsContainer}>
           <IconContext.Provider
-            value={{ color: "#000", size: "30px", marginRight: "5px" }}
+            value={{ color: "#120b6e", size: "30px", marginRight: "5px" }}
           >
             <FaUser />
           </IconContext.Provider>
-          <Link className={classes.link} href="/Profile">
+          {/* <Link className={classes.link} href="/Profile">
             <p className={classes.buttonText}>My Profile</p>
-          </Link>
+          </Link> */}
+          <h3 className={classes.message}>You are logged in</h3>
         </div>
       </div>
     );

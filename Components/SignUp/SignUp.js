@@ -28,7 +28,7 @@ function SignUp(props) {
 
   return (
     <form className={classes.postContainer} onSubmit={signUpHandler}>
-      <h1>Create a new account</h1>
+      <h1 className={classes.heading}>Create a new account</h1>
       <div className={classes.content}>
         <div className={classes.control}>
           <label htmlFor="username" className={classes.label}>

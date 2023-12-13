@@ -25,7 +25,7 @@ function LogIn(props) {
 
   return (
     <form className={classes.postContainer} onSubmit={logInHandler}>
-      <h1>Log in to your account</h1>
+      <h1 className={classes.heading}>Log in to your account</h1>
       <div className={classes.content}>
         <div className={classes.control}>
           <label htmlFor="username" className={classes.label}>
@@ -51,7 +51,7 @@ function LogIn(props) {
             className={classes.inputBox}
           />
         </div>
-        <div>
+        <div style={{marginBottom:"10px"}}>
           <button className={classes.postBtn}>Log in</button>
           <Link className={classes.link} href="/SignUp">
             <button className={classes.postBtn}>Create account</button>

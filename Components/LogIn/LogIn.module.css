@@ -39,7 +39,13 @@
 
 .postBtn {
   padding-left: 25px;
-  background-color: #aaaaaa;
+  color: white;
+  background: rgb(6, 0, 105);
+  background: linear-gradient(
+    0deg,
+    rgba(6, 0, 105, 1) 0%,
+    rgba(0, 153, 193, 1) 100%
+  );
   padding-right: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -51,9 +57,11 @@
 }
 
 .postBtn:hover {
-  background-color: #949494;
+  transform: scale(1.05);
 }
-
+.heading{
+  color: rgb(3, 3, 109);
+}
 .label{
   display: flex;
   margin-right: 10px;

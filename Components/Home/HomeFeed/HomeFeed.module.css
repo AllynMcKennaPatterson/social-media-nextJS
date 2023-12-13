@@ -10,5 +10,6 @@
     margin: 0px;
     align-items: center;
     justify-content: center;
-    background-color: #dddddd;
+    background: rgb(0,112,157);
+background: linear-gradient(0deg, rgba(0,112,157,1) 0%, rgba(198,255,254,1) 100%);
 }

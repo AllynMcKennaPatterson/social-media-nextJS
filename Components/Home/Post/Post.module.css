@@ -28,7 +28,7 @@
     margin-top: 10px;
     object-fit: cover;
     border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
   }
   
   .postIcon {
