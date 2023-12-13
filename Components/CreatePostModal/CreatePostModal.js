@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { useRef } from "react";
 import classes from "./CreatPostModal.module.css";
-import Link from "next/link";
 
 // import Link from "next/link";
 // import ImgUpload from "../ImgUpload/ImgUpload";
@@ -59,7 +58,7 @@ function CreatePostModal(props) {
           }}
         >
           <div className={classes.postContainer}>
-            <h1 className={classes.heading}>Create your post</h1>
+            <h1>Create your post</h1>
             <div className={classes.content}>
               <div className={classes.control}>
                 <label htmlFor="username" className={classes.label}>
@@ -98,8 +97,7 @@ function CreatePostModal(props) {
                   className={classes.inputBox}
                 />
               </div>
-                <button className={classes.postBtn}>Post</button>
-              
+              <button className={classes.postBtn}>Post</button>
             </div>
           </div>
         </div>
