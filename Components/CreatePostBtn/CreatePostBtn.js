@@ -9,14 +9,11 @@ import Link from "next/link";
 export default function CreatePostBtn(props) {
   if (props.isLoggedIn != true) {
     return (
-      <Link href="/LogIn">
       <div className={classes.mainDiv}>
-          
         <Link className={classes.link} href="/LogIn">
             <p className={classes.buttonText}>Create a Post</p>
           </Link>
       </div>
-      </Link>
     );
   } else {
     return (
