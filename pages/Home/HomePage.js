@@ -27,8 +27,9 @@ function HomePage() {
           open={openModal}
           onClose={() => setOpenModal(false)}
           onAddPost={addPostHandler}
+          
         />
-        <CreatePostBtn setOpenModal={() => setOpenModal(true)} />
+        <CreatePostBtn setOpenModal={() => setOpenModal(true)} isLoggedIn = {globalCtx.theGlobalObject.loggedIn}/>
         <div className={classes.layers}>
           <Header />
         <div className={classes.componentContainer}>
