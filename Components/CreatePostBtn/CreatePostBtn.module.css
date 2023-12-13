@@ -4,15 +4,35 @@
     flex-direction: row;
     align-items: center;
     border-radius: 50%;
-    right: 50px;
-    bottom: 50px;
+    right: 100px;
+    bottom: 100px;
     position: fixed;
     z-index: 30;
   }
   
-  .mainSpan {
+  /* .mainSpan {
     background: transparent;
     text-align: center;
     font-size: 80px;
+  } */
+  .link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: #aaa;
+    padding:30px 30px;
+    /* padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px; */
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
-  
+  .buttonText{
+    margin: 0;
+    padding: 0;
+  }
