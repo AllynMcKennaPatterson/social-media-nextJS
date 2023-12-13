@@ -18,18 +18,14 @@ function LogInPage(props) {
   }
 
   return (
-
     <div>
       <Header />
       <div className={classes.container}>
         <Card className={classes.card}>
-          <LogIn
-            onLogIn={logInHandler}
-          />
+          <LogIn onLogIn={logInHandler} />
         </Card>
       </div>
     </div>
-
   );
 }
 
