@@ -7,6 +7,7 @@ import { FaUser } from "react-icons/fa";
 import GlobalContext from "@/Store/globalContext";
 import Link from "next/link";
 import { IconContext } from "react-icons";
+// import myLogo from "./logo.png";
 
 function Header() {
   const globalCtx = useContext(GlobalContext);
@@ -19,8 +20,9 @@ function Header() {
             <p className={classes.buttonText}>Home</p>
           </Link>
         </div>
-        <div>
-        </div>
+        {/* <div className={classes.logoContainer}>
+          <img src={myLogo} alt="picSync logo" />
+        </div> */}
         <div className={classes.iconsContainer}>
           <IconContext.Provider
             value={{ color: "#000", size: "30px", marginRight: "5px" }}
@@ -28,13 +30,12 @@ function Header() {
             <FaUser />
           </IconContext.Provider>
           <Link className={classes.link} href="/Profile">
-              <p className={classes.buttonText}>My Profile</p>
+            <p className={classes.buttonText}>My Profile</p>
           </Link>
         </div>
       </div>
     );
-  }
-  else{
+  } else {
     return (
       <div className={classes.mainNavbar}>
         <div className={classes.logoContainer}>
@@ -42,14 +43,17 @@ function Header() {
             <p className={classes.buttonText}>Home</p>
           </Link>
         </div>
-        <div>
-        </div>
+        {/* <div>
+          <div className={classes.logoContainer}>
+            <a src={myLogo} alt="picSync logo" className={classes.logo} />
+          </div>
+        </div> */}
         <div className={classes.logIn}>
           <Link className={classes.link} href="/LogIn">
-              <p className={classes.buttonText}>Log In</p>
+            <p className={classes.buttonText}>Log In</p>
           </Link>
           <Link className={classes.link} href="/SignUp">
-              <p className={classes.buttonText}>Sign Up</p>
+            <p className={classes.buttonText}>Sign Up</p>
           </Link>
         </div>
       </div>

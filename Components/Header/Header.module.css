@@ -96,3 +96,8 @@
   margin: 0;
   padding: 0;
 }
+
+.logo{
+  max-height: 50px;
+  object-fit: contain;
+}
