@@ -1,9 +1,4 @@
-//This component is used in HomePage.js
-//It shows the CreatePostModal
-
 import classes from "./CreatePostBtn.module.css";
-import { AiFillPlusCircle } from "react-icons/ai";
-import { IconContext } from "react-icons";
 import Link from "next/link";
 
 export default function CreatePostBtn(props) {

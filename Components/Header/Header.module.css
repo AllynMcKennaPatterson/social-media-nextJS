@@ -7,23 +7,6 @@
   background-color: rgb(255, 255, 255);
   border-bottom: 5px solid rgb(14, 0, 78);
 }
-.profileImage {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  margin-left: 20px;
-  margin-top: 5px;
-}
-
-.searchInputContainer {
-  display: flex;
-  align-items: center;
-  flex: 4;
-  margin-top: 9px;
-  background-color: rgb(229, 232, 235);
-  padding: 5px;
-  border-radius: 10px;
-}
 
 .iconsContainer {
   display: flex;
@@ -90,12 +73,8 @@
 }
 
 .navButton {
-  /* background: blue;
-    width: 80px; */
   text-align: center;
   margin-left: 50px;
-  /* vertical-align: middle;
-  height: 30px; */
 }
 
 .logIn {

@@ -1,20 +1,11 @@
-//This component is used in HomePage.js
-//This is shown when CreatePostBtn is clicked
-//It is hidden when the backdrop is clicked
-
-import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { useRef } from "react";
 import classes from "./CreatPostModal.module.css";
 import GlobalContext from "@/Store/globalContext";
 
-// import Link from "next/link";
-// import ImgUpload from "../ImgUpload/ImgUpload";
-
 function CreatePostModal(props) {
   const globalctx = useContext(GlobalContext)
   if (!props.open) return null;
-  const usernameInputRef = useRef();
   const contentInputRef = useRef();
   const imageInputRef = useRef();
 
@@ -58,24 +49,12 @@ function CreatePostModal(props) {
         <div
           className={classes.card}
           onClick={(e) => {
-            e.stopPropagation(); //Prevents onClick from propogating to nested elements below
+            e.stopPropagation();
           }}
         >
           <div className={classes.postContainer}>
             <h1>Create your post</h1>
             <div className={classes.content}>
-              {/* <div className={classes.control}>
-                <label htmlFor="username" className={classes.label}>
-                  Username
-                </label>
-                <input
-                  type="text"
-                  required
-                  id="username"
-                  ref={usernameInputRef}
-                  className={classes.inputBox}
-                />
-              </div> */}
               <div className={classes.control}>
                 <label htmlFor="content" className={classes.label}>
                   Post text

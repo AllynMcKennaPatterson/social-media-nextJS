@@ -1,4 +1,3 @@
-import NewMeetupForm from '../../components/meetups/NewMeetupForm'
 import { useRouter } from 'next/router';
 import GlobalContext from "../../pages/store/globalContext"
 import { useContext } from 'react'

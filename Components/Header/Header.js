@@ -1,6 +1,3 @@
-//This component is shown on every page
-
-import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import classes from "./Header.module.css";
 import { FaUser } from "react-icons/fa";
@@ -34,9 +31,6 @@ function Header(props) {
           >
             <FaUser />
           </IconContext.Provider>
-          {/* <Link className={classes.link} href="/Profile">
-            <p className={classes.buttonText}>My Profile</p>
-          </Link> */}
           <h3 className={classes.message}>You are logged in</h3>
         </div>
       </div>
