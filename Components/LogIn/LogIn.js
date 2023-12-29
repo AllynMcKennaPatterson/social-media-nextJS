@@ -1,9 +1,5 @@
 import classes from "./LogIn.module.css";
 import { useRef } from "react";
-import GlobalContext from "@/Store/globalContext";
-import { useContext } from "react";
-
-import Header from "@/Components/Header/Header";
 import Link from "next/link";
 
 function LogIn(props) {

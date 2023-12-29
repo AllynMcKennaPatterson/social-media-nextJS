@@ -1,10 +1,6 @@
-//This component is shown on Profile.js
+//Not used currently
 
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
 import classes from "./Bio.module.css";
-
-import Link from "next/link";
 
 function Bio() {
   return (

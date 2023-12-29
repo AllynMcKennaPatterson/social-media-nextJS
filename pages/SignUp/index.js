@@ -1,14 +1,12 @@
 import classes from "./SignUp.module.css";
-import { useRef } from "react";
 import GlobalContext from "@/Store/globalContext";
 import { useContext } from "react";
-
 import Header from "@/Components/Header/Header";
 import { useRouter } from "next/navigation";
 import SignUp from "@/Components/SignUp/SignUp";
 import Card from "@/Components/Card/Card";
 
-function SignUpPage(props) {
+function SignUpPage() {
   const router = useRouter();
   const globalCtx = useContext(GlobalContext);
 

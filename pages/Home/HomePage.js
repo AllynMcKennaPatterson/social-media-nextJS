@@ -15,7 +15,6 @@ function HomePage() {
   const globalCtx = useContext(GlobalContext);
 
   async function addPostHandler(enteredPostData) {
-    // await globalCtx.updateGlobals({ cmd: "addPost", newVal: JSON.stringify(enteredPostData) });
     await globalCtx.updateGlobals({ cmd: "addPost", newVal: enteredPostData });
     router.push("/");
   }
@@ -56,20 +55,6 @@ function HomePage() {
       </div>
     );
   }
-
-  //Here for testing
-  //   return (
-  //     <>
-  //       <CreatePostModal
-  //         open={openModal}
-  //         onClose={() => setOpenModal(false)}
-  //         onAddPost={addPostHandler}
-  //       />
-  //       <CreatePostBtn setOpenModal={() => setOpenModal(true)} />
-  //       <Header />
-  //       <HomeFeed posts={globalCtx.theGlobalObject.posts} />
-  //     </>
-  //   );
 }
 
 export default HomePage;

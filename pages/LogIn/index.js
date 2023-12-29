@@ -1,5 +1,4 @@
 import classes from "./LogIn.module.css";
-import { useRef } from "react";
 import GlobalContext from "@/Store/globalContext";
 import { useContext } from "react";
 
@@ -8,7 +7,7 @@ import LogIn from "@/Components/LogIn/LogIn";
 import { useRouter } from "next/navigation";
 import Card from "@/Components/Card/Card";
 
-function LogInPage(props) {
+function LogInPage() {
   const router = useRouter();
   const globalCtx = useContext(GlobalContext);
 
@@ -21,7 +20,7 @@ function LogInPage(props) {
     <div>
       <Header />
       <div className={classes.container}>
-        <Card className={classes.card}>
+        <Card>
           <LogIn onLogIn={logInHandler} />
         </Card>
       </div>
