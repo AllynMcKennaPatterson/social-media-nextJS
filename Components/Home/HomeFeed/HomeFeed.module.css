@@ -1,14 +1,28 @@
 .mainPostContainer{
     flex: 3;
+    display: flex;
     background-color: #8ec6d4;
-    
 }
 
 .list{
     display: flex;
     flex-direction: column;
     margin: 0px;
+    padding: 0px;
     align-items: center;
-    justify-content: center;
+    width: 100%;
+    justify-content: start;
     background-color: #8ec6d4;
+}
+
+.userListContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: start;
+}
+
+.postContainer{
+    margin-top:  30px;
 }
