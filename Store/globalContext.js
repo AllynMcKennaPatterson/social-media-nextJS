@@ -13,6 +13,7 @@ export function GlobalContextProvider(props) {
   const [globals, setGlobals] = useState({
     hideModal: true,
     posts: [],
+    users: [],
     meetings: [],
     loggedIn: false,
     currentUser: null,
