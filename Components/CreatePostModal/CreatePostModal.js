@@ -4,7 +4,7 @@ import classes from "./CreatPostModal.module.css";
 import GlobalContext from "@/Store/globalContext";
 
 function CreatePostModal(props) {
-  const globalctx = useContext(GlobalContext)
+  const globalctx = useContext(GlobalContext);
   if (!props.open) return null;
   const contentInputRef = useRef();
   const imageInputRef = useRef();
@@ -16,9 +16,9 @@ function CreatePostModal(props) {
   function submitHandler(event) {
     event.preventDefault();
 
-    let currUser = JSON.parse(globalctx.theGlobalObject.currentUser)
-    
-    const enteredUsername = currUser.username
+    let currUser = JSON.parse(globalctx.theGlobalObject.currentUser);
+
+    const enteredUsername = currUser.username;
     const enteredContent = contentInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
     let today = new Date();
@@ -30,7 +30,7 @@ function CreatePostModal(props) {
       dateTimeofUpload:
         today.getFullYear() +
         "-" +
-        zeroPad(today.getMonth()) +
+        zeroPad(today.getMonth() + 1) +
         "-" +
         zeroPad(today.getDate()) +
         "T" +
