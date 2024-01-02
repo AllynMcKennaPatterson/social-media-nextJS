@@ -1,0 +1,19 @@
+
+.userListContainer{
+    width: 350px;
+    margin: 0px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.list{
+    width: 90%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.user{
+    margin-bottom: 15px;
+}

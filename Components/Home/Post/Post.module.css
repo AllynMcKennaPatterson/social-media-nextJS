@@ -25,12 +25,25 @@
   .postImage img{
     width: 400px;
     height:400px;
-    margin-top: 10px;
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
   }
   
+  .profilePic{
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgb(68, 68, 68);
+    border-radius: 50px;
+}
+
+.profilePic img{
+    width: 40px;
+    height:40px;
+    object-fit: cover;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+}
   .postIcon {
     width: 20px;
     /* margin-left: 10px;*/
@@ -66,8 +79,10 @@
   }
 
   .username{
-    align-items: flex-start;
-    height: 50px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0px 15px;
   }
 
   .caption{
@@ -76,4 +91,11 @@
     align-items: center;
     justify-content: flex-start;
     margin: 0px 0px 20px 0px;
+  }
+
+  .header{
+    display: flex;
+    height: 70px;
+    width: 100%;
+    align-items: center;
   }
