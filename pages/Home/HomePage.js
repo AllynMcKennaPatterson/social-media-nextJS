@@ -7,6 +7,7 @@ import Header from "@/Components/Header/Header";
 import CreatePostModal from "@/Components/CreatePostModal/CreatePostModal";
 import CreatePostBtn from "@/Components/CreatePostBtn/CreatePostBtn";
 import HomeFeed from "@/Components/Home/HomeFeed/HomeFeed";
+import UserList from "@/Components/UserList/UserList";
 
 function HomePage() {
   const [openModal, setOpenModal] = useState(false);
@@ -34,7 +35,10 @@ function HomePage() {
         <div className={classes.layers}>
           <Header />
           <div className={classes.componentContainer}>
-            <HomeFeed posts={globalCtx.theGlobalObject.posts} />
+            <HomeFeed
+              posts={globalCtx.theGlobalObject.posts}
+              users={globalCtx.theGlobalObject.users}
+            />
           </div>
         </div>
       </div>
