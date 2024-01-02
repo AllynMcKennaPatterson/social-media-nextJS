@@ -126,7 +126,7 @@ export function GlobalContextProvider(props) {
     }
 
     if (command.cmd == "getFollowing") {
-      const response = await fetch("/api/get-following/", {
+      const response = await fetch("/api/get-following/{}", {
         method: "GET",
         body: command.newVal,
       })
