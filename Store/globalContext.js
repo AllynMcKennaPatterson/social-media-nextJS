@@ -140,17 +140,18 @@ export function GlobalContextProvider(props) {
     //     return newGlobals;
     //   })
     // }
-
+  }
     const context = {
       updateGlobals: editGlobalData,
       theGlobalObject: globals,
     };
+  
 
-    return (
-      <GlobalContext.Provider value={context}>
-        {props.children}
-      </GlobalContext.Provider>
-    );
-  }
+  return (
+    <GlobalContext.Provider value={context}>
+      {props.children}
+    </GlobalContext.Provider>
+  );
+
 }
 export default GlobalContext;
