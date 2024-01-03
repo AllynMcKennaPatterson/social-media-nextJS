@@ -1,6 +1,7 @@
 import GlobalContext from "@/Store/globalContext";
 import classes from "./SignUp.module.css";
 import { useRef, useContext } from "react";
+import HashPass from "@/functions/Bcrypt/HashPass";
 
 function SignUp(props) {
   const emailInputRef = useRef();
@@ -9,11 +10,11 @@ function SignUp(props) {
   const profilePicInputRef = useRef();
   const globalCtx = useContext(GlobalContext);
 
-  function signUpHandler(event) {
+  async function signUpHandler(event) {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredUsername = usernameInputRef.current.value;
-    const enteredPassword = passwordInputRef.current.value;
+    const enteredPassword = await HashPass(passwordInputRef.current.value)
     const enteredProfilePic = profilePicInputRef.current.value;
 
     const signUpData = {
