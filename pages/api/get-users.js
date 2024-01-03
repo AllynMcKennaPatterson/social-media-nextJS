@@ -9,6 +9,7 @@ async function handler(req, res) {
   });
   const data = await response.json();
   res.json(data);
+  console.log(data)
 }
 
 export default handler;

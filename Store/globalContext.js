@@ -126,20 +126,20 @@ export function GlobalContextProvider(props) {
       });
     }
 
-    if (command.cmd == "getFollowing") {
-      const response = await fetch("/api/get-following/{}", {
-        method: "GET",
-        body: command.newVal,
-      })
-      const data = await response.json()
-      console.log("Follwing list:", data)
-      setGlobals((previousGlobals) => {
-        const newGlobals = JSON.parse(JSON.stringify(previousGlobals))
-        // verify that currentUser object is being updated
-        console.log(newGlobals.currentUser)
-        return newGlobals;
-      })
-    }
+    // if (command.cmd == "getFollowing") {
+    //   const response = await fetch("/api/get-following/{}", {
+    //     method: "GET",
+    //     body: command.newVal,
+    //   })
+    //   const data = await response.json()
+    //   console.log("Follwing list:", data)
+    //   setGlobals((previousGlobals) => {
+    //     const newGlobals = JSON.parse(JSON.stringify(previousGlobals))
+    //     // verify that currentUser object is being updated
+    //     console.log(newGlobals.currentUser)
+    //     return newGlobals;
+    //   })
+    // }
 
     const context = {
       updateGlobals: editGlobalData,
