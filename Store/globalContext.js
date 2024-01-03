@@ -124,6 +124,11 @@ export function GlobalContextProvider(props) {
         console.log(newGlobals.currentUser);
         return newGlobals;
       });
+
+      // Haven't tested this logic yet, will have to ensure it works when we connect to front end
+      const response2 = await fetch(`/api/init-following/${command.newVal.username}`,{
+        method: "POST"
+      })
     }
 
     // if (command.cmd == "getFollowing") {
