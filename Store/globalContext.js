@@ -21,7 +21,35 @@ export function GlobalContextProvider(props) {
 
   useEffect(() => {
     getAllPosts();
+    updateUserList();
   }, []);
+
+  async function updateUserList() {
+    const response = await fetch("/api/get-users", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setGlobals((previousGlobals) => {
+      const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+      newGlobals.users = data;
+      let arrayWithoutCurrentUser = [];
+        if (newGlobals.currentUser === null) {
+          return newGlobals;
+        }
+        else{
+          newGlobals.users.forEach((user) => {
+          if (user.username !== JSON.parse(newGlobals.currentUser).username) {
+            arrayWithoutCurrentUser.push(user)
+          }
+          });
+        }
+      newGlobals.users = arrayWithoutCurrentUser;
+      return newGlobals;
+    });
+  }
 
   async function getAllPosts() {
     const response = await fetch("/api/get-posts", {
@@ -96,6 +124,7 @@ export function GlobalContextProvider(props) {
 
           console.log("changed globals after login");
         }
+        updateUserList();
         return newGlobals;
       });
     }
@@ -122,6 +151,7 @@ export function GlobalContextProvider(props) {
         }
         // verify that currentUser object is being updated
         console.log(newGlobals.currentUser);
+        updateUserList();
         return newGlobals;
       });
     }
@@ -141,17 +171,15 @@ export function GlobalContextProvider(props) {
     //   })
     // }
   }
-    const context = {
-      updateGlobals: editGlobalData,
-      theGlobalObject: globals,
-    };
-  
+  const context = {
+    updateGlobals: editGlobalData,
+    theGlobalObject: globals,
+  };
 
   return (
     <GlobalContext.Provider value={context}>
       {props.children}
     </GlobalContext.Provider>
   );
-
 }
 export default GlobalContext;
