@@ -11,12 +11,12 @@ function HomeFeed(props) {
   return (
     <div className={classes.mainPostContainer}>
       <div className={classes.userListContainer}>
-        <UserList users={globalCtx.theGlobalObject.users}/>
+        <UserList users={props.users}/>
       </div>
         
       <ul className={classes.list}>
         {props.posts.map((post, currentUser) => (
-          <div className={classes.postContainer}>
+          <li className={classes.postContainer}>
             <Card>
             <Post
               username={post.userName}
@@ -25,7 +25,7 @@ function HomeFeed(props) {
               profilepic={currentUser.profilepic}
             />
           </Card>
-          </div>
+          </li>
           
         ))}
       </ul>
