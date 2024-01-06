@@ -2,17 +2,40 @@ import GlobalContext from "@/Store/globalContext";
 import classes from "./FollowUser.module.css";
 import Card from "../Card/Card";
 import Link from "next/link";
+import {useContext } from "react";
 
 export default function FollowUser(props) {
-  return (
-    <div className={classes.userContainer}>
-      <div className={classes.profilePic}>
-        <img src={props.profilepic} />
+  const globalCtx = useContext(GlobalContext);
+
+  async function followHandler(){
+    let userFollowing = {myUsername: JSON.parse(globalCtx.theGlobalObject.currentUser).username, userToFollow: props.username, email: JSON.parse(globalCtx.theGlobalObject.currentUser).email}
+    console.log("Followed: " + JSON.stringify(userFollowing))
+    await globalCtx.updateGlobals({ cmd: "addFollow", newVal: userFollowing});
+  }
+  if(globalCtx.theGlobalObject.currentUser === null){
+    return (
+      <div className={classes.userContainer}>
+        <div className={classes.profilePic}>
+          <img src={props.profilepic} />
+        </div>
+        <p className={classes.username}>{props.username}</p>
+        <Link className={classes.linkDisabled} href="/LogIn">
+          <p className={classes.buttonText}>Log In to Follow</p>
+        </Link>
       </div>
-      <p className={classes.username}>{props.username}</p>
-      <Link className={classes.link} href="/">
-        <p className={classes.buttonText}>Follow</p>
-      </Link>
-    </div>
-  );
+    );
+  }
+  else{
+    return (
+      <div className={classes.userContainer}>
+        <div className={classes.profilePic}>
+          <img src={props.profilepic} />
+        </div>
+        <p className={classes.username}>{props.username}</p>
+        <Link className={classes.link} href="/" onClick={followHandler}>
+          <p className={classes.buttonText}>Follow</p>
+        </Link>
+      </div>
+    );
+  }
 }

@@ -100,6 +100,22 @@ export function GlobalContextProvider(props) {
         return newGlobals;
       });
     }
+    if (command.cmd == "addFollow") {
+      const response = await fetch("/api/follow-user", {
+        method: "POST",
+        body: JSON.stringify(command.newVal),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(data)
+      setGlobals((previousGlobals) => {
+        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+        newGlobals.posts.push(command.newVal);
+        return newGlobals;
+      });
+    }
 
     if (command.cmd == "logIn") {
       const response = await fetch("/api/log-in", {
@@ -117,8 +133,8 @@ export function GlobalContextProvider(props) {
         if (data !== null) {
           // console.log(data)
           newGlobals.loggedIn = true;
-          let { username, profilepic } = data;
-          const newUser = { username, profilepic };
+          let { username, profilepic, email } = data;
+          const newUser = { username, profilepic, email };
           console.log(JSON.stringify(newUser));
           newGlobals.currentUser = JSON.stringify(newUser);
 

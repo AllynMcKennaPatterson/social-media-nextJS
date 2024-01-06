@@ -31,7 +31,7 @@ function Header(props) {
           >
             <FaUser />
           </IconContext.Provider>
-          <h3 className={classes.message}>You are logged in</h3>
+          <h3 className={classes.message}>{JSON.parse(globalCtx.theGlobalObject.currentUser).username}</h3>
         </div>
       </div>
     );
