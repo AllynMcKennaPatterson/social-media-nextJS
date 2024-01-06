@@ -1,6 +1,6 @@
 
 .userListContainer{
-    width: 350px;
+    width: 380px;
     margin: 0px 50px;
     display: flex;
     flex-direction: column;
@@ -10,10 +10,14 @@
 
 .list{
     width: 90%;
+    max-height: 500px;
+    overflow: auto;
     margin: 0px;
     padding: 0px;
 }
 
 .user{
     margin-bottom: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
