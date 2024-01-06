@@ -14,6 +14,7 @@ export function GlobalContextProvider(props) {
     hideModal: true,
     posts: [],
     users: [],
+    followList: [],
     meetings: [],
     loggedIn: false,
     currentUser: null,
@@ -40,6 +41,8 @@ export function GlobalContextProvider(props) {
           return newGlobals;
         }
         else{
+          // let hideFromList = followList.push(JSON.parse(newGlobals.currentUser).username);
+          console.log(hideFromList);
           newGlobals.users.forEach((user) => {
           if (user.username !== JSON.parse(newGlobals.currentUser).username) {
             arrayWithoutCurrentUser.push(user)
@@ -177,20 +180,18 @@ export function GlobalContextProvider(props) {
       })
     }
 
-    // if (command.cmd == "getFollowing") {
-    //   const response = await fetch("/api/get-following/{}", {
-    //     method: "GET",
-    //     body: command.newVal,
-    //   })
-    //   const data = await response.json()
-    //   console.log("Follwing list:", data)
-    //   setGlobals((previousGlobals) => {
-    //     const newGlobals = JSON.parse(JSON.stringify(previousGlobals))
-    //     // verify that currentUser object is being updated
-    //     console.log(newGlobals.currentUser)
-    //     return newGlobals;
-    //   })
-    // }
+    if (command.cmd == "getFollowing") {
+      const response = await fetch(`/api/get-following/${command.newVal}`, {
+        method: "GET",
+      })
+      const data = await response.json()
+      setGlobals((previousGlobals) => {
+        const newGlobals = JSON.parse(JSON.stringify(previousGlobals))
+        newGlobals.followList = data;
+        console.log(newGlobals.followList)
+        return newGlobals;
+      })
+    }
   }
   const context = {
     updateGlobals: editGlobalData,
