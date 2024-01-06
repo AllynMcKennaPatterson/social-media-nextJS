@@ -4,7 +4,7 @@ import classes from "./Post.module.css";
 function Post(props) {
 
   return (
-    <li className={classes.item}>
+    <div className={classes.item}>
       <div className={classes.username}>
         <h3>{props.username}</h3>
       </div>
@@ -18,7 +18,7 @@ function Post(props) {
       {/* <div className={classes.actions}>
           <button onClick={showDetailsHandler}>Show Details</button>
         </div> */}
-    </li>
+    </div>
   );
 }
 

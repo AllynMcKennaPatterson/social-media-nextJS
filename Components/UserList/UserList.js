@@ -12,14 +12,14 @@ export default function UserList(props) {
                 <h3>Follow Other Users</h3>
                 <ul className={classes.list}>
                     {props.users.map((user) => (
-                    <div className={classes.user}>
+                    <li key={user.username}  className={classes.user}>
                         <Card>
                         <FollowUser
                         username={user.username}
-                        profilePic={user.profilePic}
+                        profilepic={user.profilepic}
                         />
                     </Card>
-                    </div>
+                    </li>
                     
                     ))}
                 </ul>
