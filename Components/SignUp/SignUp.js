@@ -38,7 +38,7 @@ function SignUp(props) {
           <input
             type="email"
             required
-            id="username"
+            id="email"
             ref={emailInputRef}
             className={classes.inputBox}
           />
