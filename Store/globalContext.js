@@ -37,15 +37,6 @@ export function GlobalContextProvider(props) {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.users = data;
       let arrayWithoutCurrentUser = [];
-<<<<<<< HEAD
-        if (newGlobals.currentUser === null) {
-          return newGlobals;
-        }
-        else{
-          // let hideFromList = followList.push(JSON.parse(newGlobals.currentUser).username);
-          // console.log(hideFromList);
-          newGlobals.users.forEach((user) => {
-=======
       if (newGlobals.currentUser === null) {
         return newGlobals;
       }
@@ -53,7 +44,6 @@ export function GlobalContextProvider(props) {
         // let hideFromList = followList.push(JSON.parse(newGlobals.currentUser).username);
         // console.log(hideFromList);
         newGlobals.users.forEach((user) => {
->>>>>>> 9d076e9 (added logout button. working)
           if (user.username !== JSON.parse(newGlobals.currentUser).username) {
             arrayWithoutCurrentUser.push(user)
           }
