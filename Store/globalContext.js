@@ -19,14 +19,20 @@ export function GlobalContextProvider(props) {
     currentUser: null,
   }
   const [globals, setGlobals] = useState(defaultGlobals);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     getAllPosts();
-    updateUserList();
+    setRefresh(true);
   }, []);
 
+  useEffect(() => {
+    updateUserList();
+    setRefresh(false)
+  }, [refresh]);
+
   async function updateUserList() {
-    const response = await fetch("/api/get-users", {
+      const response = await fetch("/api/get-users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -130,11 +136,19 @@ export function GlobalContextProvider(props) {
         },
       });
       const data = await response.json();
-      setGlobals((previousGlobals) => {
+      console.log("Data" + JSON.stringify(data))
+      if(JSON.stringify(data.followed) == "true") {
+        setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        newGlobals.posts.push(command.newVal);
+        console.log("Command newVal" + JSON.stringify(command.newVal.userToFollow))
+        newGlobals.followList.push(command.newVal.userToFollow);
+        setRefresh(true);
         return newGlobals;
       });
+      }
+      else if(JSON.stringify(data.followed) == "false"){
+        console.log("Data value = false")
+      }
     }
 
     if (command.cmd == "logIn") {
@@ -217,6 +231,7 @@ export function GlobalContextProvider(props) {
         newGlobals.followList= []
         newGlobals.loggedIn = false
         newGlobals.currentUser = null
+        setRefresh(true);
         return newGlobals;
       });
       

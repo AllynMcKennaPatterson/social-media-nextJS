@@ -27,7 +27,8 @@ function Header(props) {
             />
           </div>
         </div>
-        <div className={classes.iconsContainer}>
+        <div className={classes.userDetailsContainer}>
+          <div className={classes.iconsContainer}>
           <IconContext.Provider
             value={{ color: "#120b6e", size: "30px", marginRight: "5px" }}
           >
@@ -35,13 +36,15 @@ function Header(props) {
           </IconContext.Provider>
           <h3 className={classes.message}>{JSON.parse(globalCtx.theGlobalObject.currentUser).username}</h3>
         </div>
-        <div className={classes.logIn} onClick={SignOutHandler}>
-          <Link className={classes.link} href="/">
+        <div className={classes.logOut} >
+          <Link className={classes.linkAlt} href="/" onClick={SignOutHandler}>
             <p className={classes.buttonText}>Log Out</p>
             
           </Link>
         </div>
       </div>
+        </div>
+        
     );
   } else {
     return (
