@@ -7,7 +7,9 @@ import { IconContext } from "react-icons";
 
 function Header(props) {
   const globalCtx = useContext(GlobalContext);
-
+  async function SignOutHandler() {
+    await globalCtx.updateGlobals({ cmd: "signOut"});
+  }
   if (globalCtx.theGlobalObject.loggedIn == true) {
     return (
       <div className={classes.mainNavbar}>
@@ -32,6 +34,12 @@ function Header(props) {
             <FaUser />
           </IconContext.Provider>
           <h3 className={classes.message}>{JSON.parse(globalCtx.theGlobalObject.currentUser).username}</h3>
+        </div>
+        <div className={classes.logIn} onClick={SignOutHandler}>
+          <Link className={classes.link} href="/">
+            <p className={classes.buttonText}>Log Out</p>
+            
+          </Link>
         </div>
       </div>
     );
