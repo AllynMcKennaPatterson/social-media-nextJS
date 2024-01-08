@@ -10,15 +10,15 @@ import { createContext, useState, useEffect } from "react";
 const GlobalContext = createContext();
 
 export function GlobalContextProvider(props) {
-  const [globals, setGlobals] = useState({
+  const defaultGlobals = {
     hideModal: true,
     posts: [],
     users: [],
     followList: [],
-    meetings: [],
     loggedIn: false,
     currentUser: null,
-  });
+  }
+  const [globals, setGlobals] = useState(defaultGlobals);
 
   useEffect(() => {
     getAllPosts();
@@ -37,6 +37,7 @@ export function GlobalContextProvider(props) {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.users = data;
       let arrayWithoutCurrentUser = [];
+<<<<<<< HEAD
         if (newGlobals.currentUser === null) {
           return newGlobals;
         }
@@ -44,11 +45,20 @@ export function GlobalContextProvider(props) {
           // let hideFromList = followList.push(JSON.parse(newGlobals.currentUser).username);
           // console.log(hideFromList);
           newGlobals.users.forEach((user) => {
+=======
+      if (newGlobals.currentUser === null) {
+        return newGlobals;
+      }
+      else {
+        // let hideFromList = followList.push(JSON.parse(newGlobals.currentUser).username);
+        // console.log(hideFromList);
+        newGlobals.users.forEach((user) => {
+>>>>>>> 9d076e9 (added logout button. working)
           if (user.username !== JSON.parse(newGlobals.currentUser).username) {
             arrayWithoutCurrentUser.push(user)
           }
-          });
-        }
+        });
+      }
       newGlobals.users = arrayWithoutCurrentUser;
       return newGlobals;
     });
@@ -156,6 +166,7 @@ export function GlobalContextProvider(props) {
           "Content-Type": "application/json",
         },
       });
+
       const data = await response.json(); // Should check here that it worked OK
       console.log("Signup status:", data);
       setGlobals((previousGlobals) => {
@@ -174,10 +185,10 @@ export function GlobalContextProvider(props) {
         return newGlobals;
       });
 
-      // Haven't tested this logic yet, will have to ensure it works when we connect to front end
-      const response2 = await fetch(`/api/init-following/${command.newVal.username}`,{
-        method: "POST"
-      })
+      // // Haven't tested this logic yet, will have to ensure it works when we connect to front end
+      // const response2 = await fetch(`/api/init-following/${command.newVal.username}`, {
+      //   method: "POST"
+      // })
     }
 
     if (command.cmd == "getFollowing") {
@@ -187,10 +198,21 @@ export function GlobalContextProvider(props) {
       const data = await response.json()
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals))
-        newGlobals.followList = data;
+        newGlobals.followList = data
         console.log(newGlobals.followList)
-        return newGlobals;
+        return newGlobals
       })
+    }
+
+    if (command.cmd == "signOut") {
+      setGlobals((previousGlobals) => {
+        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+        newGlobals.followList= []
+        newGlobals.loggedIn = false
+        newGlobals.currentUser = null
+        return newGlobals;
+      });
+      
     }
   }
   const context = {
