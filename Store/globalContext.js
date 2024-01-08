@@ -39,13 +39,13 @@ export function GlobalContextProvider(props) {
       let arrayWithoutCurrentUser = [];
       if (newGlobals.currentUser === null) {
         return newGlobals;
-      }
-      else {
-        // let hideFromList = followList.push(JSON.parse(newGlobals.currentUser).username);
-        // console.log(hideFromList);
+      } else {
         newGlobals.users.forEach((user) => {
-          if (user.username !== JSON.parse(newGlobals.currentUser).username) {
-            arrayWithoutCurrentUser.push(user)
+          if (
+            user.username !== JSON.parse(newGlobals.currentUser).username &&
+            newGlobals.followList.includes(user.username) !== true
+          ) {
+            arrayWithoutCurrentUser.push(user);
           }
         });
       }
@@ -72,6 +72,24 @@ export function GlobalContextProvider(props) {
         newGlobals.dataLoaded = true;
         // console.log("All posts from database: ", JSON.stringify(newGlobals.posts))
       }
+      return newGlobals;
+    });
+  }
+
+  async function getFollowList(username) {
+    console.log("Username from getFollowList: " + username);
+    const response = await fetch(`/api/get-following/${username}`, {
+      method: "GET",
+    });
+    const data = await response.json();
+    console.log("Data from getFollowList" + data)
+    setGlobals((previousGlobals) => {
+      const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+      newGlobals.followList = data;
+      console.log(
+        "New globals follow list from getFollowList: " + newGlobals.followList
+      );
+      updateUserList();
       return newGlobals;
     });
   }
@@ -112,7 +130,6 @@ export function GlobalContextProvider(props) {
         },
       });
       const data = await response.json();
-      console.log(data)
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
         newGlobals.posts.push(command.newVal);
@@ -134,17 +151,13 @@ export function GlobalContextProvider(props) {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
         // Check if credentials are valid before setting loggedIn to true
         if (data !== null) {
-          // console.log(data)
           newGlobals.loggedIn = true;
           let { username, profilepic, email } = data;
           const newUser = { username, profilepic, email };
-          console.log(JSON.stringify(newUser));
           newGlobals.currentUser = JSON.stringify(newUser);
 
-          console.log("changed globals after login");
-        }
-        updateUserList();
-        return newGlobals;
+          getFollowList(newUser.username);
+                }        return newGlobals;
       });
     }
 
@@ -175,23 +188,27 @@ export function GlobalContextProvider(props) {
         return newGlobals;
       });
 
-      // // Haven't tested this logic yet, will have to ensure it works when we connect to front end
-      // const response2 = await fetch(`/api/init-following/${command.newVal.username}`, {
-      //   method: "POST"
-      // })
+      // Haven't tested this logic yet, will have to ensure it works when we connect to front end
+      const response2 = await fetch(
+        `/api/init-following/${command.newVal.username}`,
+        {
+          method: "POST",
+        }
+      );
+
     }
 
     if (command.cmd == "getFollowing") {
       const response = await fetch(`/api/get-following/${command.newVal}`, {
         method: "GET",
-      })
-      const data = await response.json()
+      });
+      const data = await response.json();
       setGlobals((previousGlobals) => {
-        const newGlobals = JSON.parse(JSON.stringify(previousGlobals))
-        newGlobals.followList = data
-        console.log(newGlobals.followList)
-        return newGlobals
-      })
+        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+        newGlobals.followList = data;
+        return newGlobals;
+      });
+
     }
 
     if (command.cmd == "signOut") {
