@@ -42,7 +42,7 @@ export function GlobalContextProvider(props) {
         }
         else{
           // let hideFromList = followList.push(JSON.parse(newGlobals.currentUser).username);
-          console.log(hideFromList);
+          // console.log(hideFromList);
           newGlobals.users.forEach((user) => {
           if (user.username !== JSON.parse(newGlobals.currentUser).username) {
             arrayWithoutCurrentUser.push(user)
