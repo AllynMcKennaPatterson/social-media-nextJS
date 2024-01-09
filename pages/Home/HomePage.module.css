@@ -8,11 +8,15 @@
     margin: auto;
     display: flex;
     justify-content: space-between;
-    z-index: -1;
+    z-index: 0;
   }
   
   .layers{
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+
+  .modal{
+    z-index: 50;
   }
