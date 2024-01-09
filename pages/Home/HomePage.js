@@ -23,11 +23,14 @@ function HomePage() {
   if (globalCtx.theGlobalObject.dataLoaded == true) {
     return (
       <div className={classes.componentContainer}>
-        <CreatePostModal
+        <div className={classes.modal}>
+          <CreatePostModal
           open={openModal}
           onClose={() => setOpenModal(false)}
           onAddPost={addPostHandler}
         />
+        </div>
+        
         <CreatePostBtn
           setOpenModal={() => setOpenModal(true)}
           isLoggedIn={globalCtx.theGlobalObject.loggedIn}
