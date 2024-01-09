@@ -28,8 +28,44 @@
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+    position: relative;
   }
   
+  .frosted{
+    width: 455px;
+    height:510px;
+    object-fit: cover;
+    border-radius: 15px;
+    position: absolute;
+    box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.8px);
+    -webkit-backdrop-filter: blur(5.8px);
+    border: 1px solid rgba(255, 255, 255, 0.44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .message{
+    height: 60px;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    width: 70%;
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.53);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.9px);
+    -webkit-backdrop-filter: blur(7.9px);
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .profilePic{
     width: 40px;
     height: 40px;
