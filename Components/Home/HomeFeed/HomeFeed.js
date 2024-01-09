@@ -11,7 +11,8 @@ function HomeFeed(props) {
   return (
     <div className={classes.mainPostContainer}>
       <div className={classes.userListContainer}>
-        <UserList users={props.users}/>
+        <UserList users={props.followUsers} method="follow"/>
+        <UserList users={props.unfollowUsers} method="unfollow"/>
       </div>
         
       <ul className={classes.list}>
