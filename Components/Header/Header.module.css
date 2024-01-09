@@ -75,8 +75,7 @@
   cursor: pointer;
   margin: 10px 0px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
-
+  box-shadow: 0 2px 8px rgba(51, 51, 51, 0.5);
 }
 .link:hover {
   transform: scale(1.05);
