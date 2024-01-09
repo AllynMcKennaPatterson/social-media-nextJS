@@ -4,6 +4,7 @@ import Post from "../Post/Post";
 import Card from "@/Components/Card/Card";
 import UserList from "@/Components/UserList/UserList";
 import GlobalContext from "@/Store/globalContext";
+import ExploreCard from "../ExploreCard/ExploreCard";
 
 function HomeFeed(props) {
 
@@ -31,6 +32,9 @@ function HomeFeed(props) {
         ))}
       </ul>
       <div className={classes.userListContainer}>
+        <ExploreCard 
+          posts = {props.allPosts}
+        />
       </div>
     </div>
   );
