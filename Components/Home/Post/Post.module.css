@@ -28,6 +28,22 @@
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+  }
+
+  .postImageAlt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+  }
+
+  .postImageAlt img{
+    width: 400px;
+    height:400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
     position: relative;
   }
   

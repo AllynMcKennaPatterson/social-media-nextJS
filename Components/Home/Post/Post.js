@@ -13,7 +13,7 @@ function Post(props) {
         <div className={classes.username}>
           <h3>{props.username}</h3>
         </div>
-        <div className={classes.postImage}>
+        <div className={classes.postImageAlt}>
           <img src={props.image} alt={props.username} />
           <div className={classes.frosted}><h2 className={classes.message}>Log In To View Posts</h2></div>
         </div>

@@ -13,6 +13,7 @@ export function GlobalContextProvider(props) {
   const defaultGlobals = {
     hideModal: true,
     posts: [],
+    allPosts: [],
     users: [],
     followList: [],
     loggedIn: false,
@@ -23,6 +24,7 @@ export function GlobalContextProvider(props) {
 
   useEffect(() => {
     setRefresh(true);
+    // getAllPosts();
   }, []);
 
   useEffect(() => {
@@ -49,7 +51,8 @@ export function GlobalContextProvider(props) {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.users = data;
       let arrayWithoutCurrentUser = [];
-      if (newGlobals.currentUser === null) {
+      // console.log(JSON.stringify(newGlobals.followList))
+      if (newGlobals.currentUser === null || newGlobals.followList == undefined) {
         return newGlobals;
       } else {
         newGlobals.users.forEach((user) => {
@@ -65,6 +68,27 @@ export function GlobalContextProvider(props) {
       return newGlobals;
     });
   }
+
+  // async function getAllPosts() {
+  //   const response = await fetch("/api/get-posts", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   setGlobals((previousGlobals) => {
+  //     const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+  //     newGlobals.allPosts = data;
+  //     if (newGlobals.allPosts === undefined) {
+  //       newGlobals.dataLoaded = false;
+  //     } else {
+  //       newGlobals.dataLoaded = true;
+  //     }
+  //     console.log("All posts" + JSON.stringify(newGlobals.allPosts))
+  //     return newGlobals;
+  //   });
+  // }
 
   async function getFilteredPosts() {
     const response = await fetch("/api/get-posts", {
@@ -139,6 +163,7 @@ export function GlobalContextProvider(props) {
         // console.log(JSON.stringify(globals.posts))
         // console.log(JSON.stringify(newGlobals.posts))
         newGlobals.posts.push(command.newVal);
+        // newGlobals.allPosts.push(command.newVal);
         return newGlobals;
       });
     }
