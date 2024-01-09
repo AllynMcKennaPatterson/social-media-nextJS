@@ -6,6 +6,7 @@
 
 import { comma } from "postcss/lib/list";
 import { createContext, useState, useEffect } from "react";
+import CompareHashandPlain from "@/functions/Bcrypt/CompareHashandPlain";
 
 const GlobalContext = createContext();
 
@@ -83,6 +84,21 @@ export function GlobalContextProvider(props) {
     });
   }
 
+  async function auth(username, plainPassword){
+    const response = await fetch(`/api/log-in-secure/${username}`, {
+      method: "GET",
+    });
+    const data = await response.json();
+    console.log("Auth response:" + JSON.stringify(data))
+    console.log("Compare hash and plain: " + await(CompareHashandPlain(plainPassword ,data.password)))
+    if(await(CompareHashandPlain(plainPassword ,data.password)) == true){
+      return data.password;
+    }
+    else{
+      return plainPassword;
+    }
+  }
+
   async function getAllPosts() {
     const response = await fetch("/api/get-posts", {
       method: "GET",
@@ -151,6 +167,10 @@ export function GlobalContextProvider(props) {
       updateUserList();
       return newGlobals;
     });
+  }
+
+  async function logIn(password, command){
+    console.log("Login Triggered: " + password)
   }
 
   async function editGlobalData(command) {
@@ -244,6 +264,10 @@ export function GlobalContextProvider(props) {
     }
 
     if (command.cmd == "logIn") {
+      const hashedPassword = await auth(command.newVal.username, command.newVal.password);
+      console.log("Hashed password function result: " + hashedPassword);
+        command.newVal.password = hashedPassword
+      
       const response = await fetch("/api/log-in", {
         method: "POST",
         body: JSON.stringify(command.newVal),
@@ -251,17 +275,24 @@ export function GlobalContextProvider(props) {
           "Content-Type": "application/json",
         },
       });
+      console.log("Password: " + JSON.stringify(command.newVal.password))
+      
       const data = await response.json(); // Should check here that it worked OK
       // console.log({data.username,data.profilepic})
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
         // Check if credentials are valid before setting loggedIn to true
-        if (data !== null) {
-          let { username, profilepic, email } = data;
-          const newUser = { username, profilepic, email };
-          newGlobals.currentUser = JSON.stringify(newUser);
-          getFollowList(newUser.username);
+        
+        if(data !== null){
+          console.log("Data:" + JSON.stringify(data))
+          // if (command.newVal.username == data.username && command.newVal.password == hashedPassword) {
+            let { username, profilepic, email } = data;
+            const newUser = { username, profilepic, email };
+            newGlobals.currentUser = JSON.stringify(newUser);
+            getFollowList(newUser.username);
+          // }
         }
+        
         return newGlobals;
       });
     }
@@ -300,6 +331,10 @@ export function GlobalContextProvider(props) {
           method: "POST",
         }
       );
+    }
+
+    if(command.cmd == "auth"){
+      
     }
 
     if (command.cmd == "getFollowing") {
