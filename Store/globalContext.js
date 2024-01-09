@@ -15,6 +15,8 @@ export function GlobalContextProvider(props) {
     posts: [],
     allPosts: [],
     users: [],
+    usersToFollow: [],
+    usersToUnfollow: [],
     followList: [],
     loggedIn: false,
     currentUser: null,
@@ -35,7 +37,6 @@ export function GlobalContextProvider(props) {
 
   useEffect(() => {
     getFilteredPosts();
-    console.log("USEFFECT FOLLOWLIST UPDATED")
   }, [globals.loggedIn]);
 
 
@@ -51,8 +52,10 @@ export function GlobalContextProvider(props) {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.users = data;
       let arrayWithoutCurrentUser = [];
+      let listOfFollowedUsers = [];
       // console.log(JSON.stringify(newGlobals.followList))
       if (newGlobals.currentUser === null || newGlobals.followList == undefined) {
+        newGlobals.usersToFollow = data;
         return newGlobals;
       } else {
         newGlobals.users.forEach((user) => {
@@ -62,9 +65,19 @@ export function GlobalContextProvider(props) {
           ) {
             arrayWithoutCurrentUser.push(user);
           }
+          else{
+            if(user.username !== JSON.parse(newGlobals.currentUser).username){
+              listOfFollowedUsers.push(user);
+            }
+          }
         });
       }
-      newGlobals.users = arrayWithoutCurrentUser;
+      // console.log("arraywithoutcurruser " + JSON.stringify(arrayWithoutCurrentUser))
+      // console.log("listOfFollowedUserObjs  " + JSON.stringify(listOfFollowedUsers))
+      newGlobals.usersToFollow = arrayWithoutCurrentUser;
+      newGlobals.usersToUnfollow = listOfFollowedUsers;
+      // console.log("usertofollow: " + JSON.stringify(newGlobals.usersToFollow))
+      // console.log("followed USers : " + JSON.stringify(newGlobals.usersToUnfollow))
       return newGlobals;
     });
   }
@@ -189,6 +202,45 @@ export function GlobalContextProvider(props) {
       }
     }
 
+    if (command.cmd == "removeFollow") {
+      const response = await fetch("/api/unfollow-user", {
+        method: "POST",
+        body: JSON.stringify(command.newVal),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      let updatedFollowList = [];
+      console.log("Data" + JSON.stringify(data));
+      if (JSON.stringify(data.unfollowed) == "true") {
+        setGlobals((previousGlobals) => {
+          const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+          console.log("FOLLOWLIST BEFORE UF: " + JSON.stringify(newGlobals.followList))
+          console.log("Updated followlist: " + JSON.stringify(updatedFollowList))
+
+          console.log("USER TO UNFOLLOW: " + command.newVal.userToFollow)
+          newGlobals.followList.forEach(name => {
+            if(name !== command.newVal.userToFollow){
+              console.log("Pushing " + name + " to updatedFollowList")
+              updatedFollowList.push(name);
+            }
+            
+          });
+          newGlobals.followList = [];
+          console.log("UPDATED FL AFTER FOREACH: " + updatedFollowList)
+          newGlobals.followList = updatedFollowList;
+          console.log("UPDATED FOLLOWLIST AFTER UF: " + newGlobals.followList)
+
+          
+          setRefresh(true);
+          return newGlobals;
+        });
+      } else if (JSON.stringify(data.followed) == "false") {
+        console.log("Data value = false");
+      }
+    }
+
     if (command.cmd == "logIn") {
       const response = await fetch("/api/log-in", {
         method: "POST",
@@ -266,6 +318,8 @@ export function GlobalContextProvider(props) {
         newGlobals.followList = [];
         newGlobals.loggedIn = false;
         newGlobals.currentUser = null;
+        newGlobals.userToFollow = [];
+        newGlobals.usersToUnfollow = [];
         setRefresh(true);
         return newGlobals;
       });

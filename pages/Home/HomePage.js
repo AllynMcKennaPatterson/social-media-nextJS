@@ -37,7 +37,8 @@ function HomePage() {
           <div className={classes.componentContainer}>
             <HomeFeed
               posts={globalCtx.theGlobalObject.posts}
-              users={globalCtx.theGlobalObject.users}
+              followUsers={globalCtx.theGlobalObject.usersToFollow}
+              unfollowUsers={globalCtx.theGlobalObject.usersToUnfollow}
             />
           </div>
         </div>

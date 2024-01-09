@@ -12,6 +12,13 @@ export default function FollowUser(props) {
     console.log("Followed: " + JSON.stringify(userFollowing))
     await globalCtx.updateGlobals({ cmd: "addFollow", newVal: userFollowing});
   }
+
+  async function unfollowHandler(){
+    let userFollowing = {myUsername: JSON.parse(globalCtx.theGlobalObject.currentUser).username, userToFollow: props.username, email: JSON.parse(globalCtx.theGlobalObject.currentUser).email}
+    console.log("Unfollowed: " + JSON.stringify(userFollowing))
+    await globalCtx.updateGlobals({ cmd: "removeFollow", newVal: userFollowing});
+  }
+
   if(globalCtx.theGlobalObject.currentUser === null){
     return (
       <div className={classes.userContainer}>
@@ -26,7 +33,8 @@ export default function FollowUser(props) {
     );
   }
   else{
-    return (
+    if(props.method == "follow"){
+      return (
       <div className={classes.userContainer}>
         <div className={classes.profilePic}>
           <img src={props.profilepic} />
@@ -37,5 +45,20 @@ export default function FollowUser(props) {
         </Link>
       </div>
     );
+    }
+    else if(props.method == "unfollow"){
+      return (
+      
+        <div className={classes.userContainer}>
+          <div className={classes.profilePic}>
+            <img src={props.profilepic} />
+          </div>
+          <p className={classes.username}>{props.username}</p>
+          <Link className={classes.linkUnfollow} href="/" onClick={unfollowHandler}>
+            <p className={classes.buttonText}>Unfollow</p>
+          </Link>
+        </div>
+      );
+    }
   }
 }
