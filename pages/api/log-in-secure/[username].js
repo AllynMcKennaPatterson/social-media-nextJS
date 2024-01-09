@@ -6,7 +6,6 @@ async function handler(req, res) {
     method: "GET"
   });
   const data = await response.json();
-  console.log(await(CompareHashandPlain("12345",data.password)))
   res.json(data);
 }
 
