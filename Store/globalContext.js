@@ -26,12 +26,13 @@ export function GlobalContextProvider(props) {
 
   useEffect(() => {
     setRefresh(true);
-    // getAllPosts();
+    getAllPosts();
   }, []);
 
   useEffect(() => {
     updateUserList();
     getFilteredPosts();
+    getAllPosts();
     setRefresh(false);
   }, [refresh]);
 
@@ -82,26 +83,26 @@ export function GlobalContextProvider(props) {
     });
   }
 
-  // async function getAllPosts() {
-  //   const response = await fetch("/api/get-posts", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   const data = await response.json();
-  //   setGlobals((previousGlobals) => {
-  //     const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-  //     newGlobals.allPosts = data;
-  //     if (newGlobals.allPosts === undefined) {
-  //       newGlobals.dataLoaded = false;
-  //     } else {
-  //       newGlobals.dataLoaded = true;
-  //     }
-  //     console.log("All posts" + JSON.stringify(newGlobals.allPosts))
-  //     return newGlobals;
-  //   });
-  // }
+  async function getAllPosts() {
+    const response = await fetch("/api/get-posts", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setGlobals((previousGlobals) => {
+      const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+      newGlobals.allPosts = data;
+      if (newGlobals.allPosts === undefined) {
+        newGlobals.dataLoaded = false;
+      } else {
+        newGlobals.dataLoaded = true;
+      }
+      // console.log("All posts" + JSON.stringify(newGlobals.allPosts))
+      return newGlobals;
+    });
+  }
 
   async function getFilteredPosts() {
     const response = await fetch("/api/get-posts", {
@@ -177,6 +178,7 @@ export function GlobalContextProvider(props) {
         // console.log(JSON.stringify(newGlobals.posts))
         newGlobals.posts.push(command.newVal);
         // newGlobals.allPosts.push(command.newVal);
+        setRefresh(true);
         return newGlobals;
       });
     }
