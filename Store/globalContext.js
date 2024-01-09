@@ -17,22 +17,28 @@ export function GlobalContextProvider(props) {
     followList: [],
     loggedIn: false,
     currentUser: null,
-  }
+  };
   const [globals, setGlobals] = useState(defaultGlobals);
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    getAllPosts();
     setRefresh(true);
   }, []);
 
   useEffect(() => {
     updateUserList();
-    setRefresh(false)
+    getFilteredPosts();
+    setRefresh(false);
   }, [refresh]);
 
+  useEffect(() => {
+    getFilteredPosts();
+    console.log("USEFFECT FOLLOWLIST UPDATED")
+  }, [globals.loggedIn]);
+
+
   async function updateUserList() {
-      const response = await fetch("/api/get-users", {
+    const response = await fetch("/api/get-users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -60,10 +66,9 @@ export function GlobalContextProvider(props) {
     });
   }
 
-  async function getAllPosts() {
+  async function getFilteredPosts() {
     const response = await fetch("/api/get-posts", {
       method: "GET",
-      // body: JSON.stringify({ posts: "all" }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -72,11 +77,21 @@ export function GlobalContextProvider(props) {
     setGlobals((previousGlobals) => {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.posts = data;
+      let filteredPosts = [];
+      if (globals.loggedIn == true) {
+        newGlobals.posts.forEach((post) => {
+          if (newGlobals.followList.includes(post.userName) == true) {
+            filteredPosts.push(post);
+          }
+        });
+        newGlobals.posts = filteredPosts;
+      } else {
+        newGlobals.posts = data;
+      }
       if (newGlobals.posts === undefined) {
         newGlobals.dataLoaded = false;
       } else {
         newGlobals.dataLoaded = true;
-        // console.log("All posts from database: ", JSON.stringify(newGlobals.posts))
       }
       return newGlobals;
     });
@@ -88,10 +103,10 @@ export function GlobalContextProvider(props) {
       method: "GET",
     });
     const data = await response.json();
-    console.log("Data from getFollowList" + data)
     setGlobals((previousGlobals) => {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.followList = data;
+      newGlobals.loggedIn = true;
       console.log(
         "New globals follow list from getFollowList: " + newGlobals.followList
       );
@@ -136,18 +151,16 @@ export function GlobalContextProvider(props) {
         },
       });
       const data = await response.json();
-      console.log("Data" + JSON.stringify(data))
-      if(JSON.stringify(data.followed) == "true") {
+      console.log("Data" + JSON.stringify(data));
+      if (JSON.stringify(data.followed) == "true") {
         setGlobals((previousGlobals) => {
-        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        console.log("Command newVal" + JSON.stringify(command.newVal.userToFollow))
-        newGlobals.followList.push(command.newVal.userToFollow);
-        setRefresh(true);
-        return newGlobals;
-      });
-      }
-      else if(JSON.stringify(data.followed) == "false"){
-        console.log("Data value = false")
+          const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
+          newGlobals.followList.push(command.newVal.userToFollow);
+          setRefresh(true);
+          return newGlobals;
+        });
+      } else if (JSON.stringify(data.followed) == "false") {
+        console.log("Data value = false");
       }
     }
 
@@ -165,13 +178,12 @@ export function GlobalContextProvider(props) {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
         // Check if credentials are valid before setting loggedIn to true
         if (data !== null) {
-          newGlobals.loggedIn = true;
           let { username, profilepic, email } = data;
           const newUser = { username, profilepic, email };
           newGlobals.currentUser = JSON.stringify(newUser);
-
           getFollowList(newUser.username);
-                }        return newGlobals;
+        }
+        return newGlobals;
       });
     }
 
@@ -209,7 +221,6 @@ export function GlobalContextProvider(props) {
           method: "POST",
         }
       );
-
     }
 
     if (command.cmd == "getFollowing") {
@@ -222,19 +233,17 @@ export function GlobalContextProvider(props) {
         newGlobals.followList = data;
         return newGlobals;
       });
-
     }
 
     if (command.cmd == "signOut") {
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        newGlobals.followList= []
-        newGlobals.loggedIn = false
-        newGlobals.currentUser = null
+        newGlobals.followList = [];
+        newGlobals.loggedIn = false;
+        newGlobals.currentUser = null;
         setRefresh(true);
         return newGlobals;
       });
-      
     }
   }
   const context = {
