@@ -1,0 +1,56 @@
+
+.exploreCardContainer{
+    margin-top: 30px;
+    align-self: center;
+    width: 530px;
+    max-height: 400px;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.mainPostContainer {
+    flex: 3;
+    display: flex;
+    background-color: #8ec6d4;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+  }
+  
+  .userListContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: flex-start;
+  }
+  
+  .postContainer {
+    list-style-type: none;
+    margin:10px;
+    width: 150px;
+    height:150px;
+  }
+
+  .previewCard{
+    width: 150px;
+    height:150px;
+  }
+
+  .contents{
+    overflow-y: scroll;
+    max-height: 400px;
+    border-radius:  20px;
+  }

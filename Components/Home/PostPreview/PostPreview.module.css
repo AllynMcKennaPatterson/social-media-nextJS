@@ -1,0 +1,157 @@
+.subPostContainer {
+    width: 94%;
+    background-color: white;
+    margin: auto;
+    /* margin-top: 20px; */
+    border-radius: 10px;
+  }
+  
+  .profileImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* margin-left: 10px;
+    margin-top: 15px; */
+  }
+  
+  .postImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height:150px;
+  }
+
+  .postImage img{
+    width: 150px;
+    height:150px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+  }
+
+  .postImageAlt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height:150px;
+  }
+
+  .postImageAlt img{
+    width: 150px;
+    height:150px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+    position: relative;
+  }
+  .postImage img:hover{
+    transform: scale(1.05);
+  }
+  
+  .frosted{
+    width: 150px;
+    height:150px;
+    object-fit: cover;
+    border-radius: 15px;
+    position: absolute;
+    box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.8px);
+    -webkit-backdrop-filter: blur(5.8px);
+    border: 1px solid rgba(255, 255, 255, 0.44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .message{
+    height: 60px;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    width: 70%;
+    background: rgba(0, 0, 0, 0.53);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.9px);
+    -webkit-backdrop-filter: blur(7.9px);
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profilePic{
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgb(68, 68, 68);
+    border-radius: 50px;
+}
+
+.profilePic img{
+    width: 40px;
+    height:40px;
+    object-fit: cover;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(1, 64, 158, 0.5);
+}
+  .postIcon {
+    width: 20px;
+  }
+  
+  .commentInput {
+      width: 60%;
+    margin-left: 10px;
+    height: 4vh;
+    border: none;
+  }
+  
+  .addCommenButton {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: #aaa;
+    cursor: "pointer";
+    margin-left: 10px;
+  }
+  
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 150px;
+    /* padding: 0px 30px; */
+  }
+
+  .username{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0px 15px;
+  }
+
+  .caption{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0px 0px 20px 0px;
+  }
+
+  .header{
+    display: flex;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .previewCard{
+    width: 200px;
+    height: 200px;
+  }
