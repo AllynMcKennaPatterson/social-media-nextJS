@@ -190,14 +190,10 @@ export function GlobalContextProvider(props) {
           "Content-Type": "application/json",
         },
       });
-      const data = await response.json(); // Should check here that it worked OK
-      // console.log(data)
+      const data = await response.json(); 
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        // console.log(JSON.stringify(globals.posts))
-        // console.log(JSON.stringify(newGlobals.posts))
         newGlobals.posts.push(command.newVal);
-        // newGlobals.allPosts.push(command.newVal);
         setRefresh(true);
         return newGlobals;
       });
@@ -314,8 +310,8 @@ export function GlobalContextProvider(props) {
         console.log("signed in");
         if (data.Signup === true) {
           newGlobals.loggedIn = true;
-          let { username, profilepic } = command.newVal;
-          let newUser = { username, profilepic };
+          let { username, profilepic, email } = command.newVal;
+          let newUser = { username, profilepic, email};
           newGlobals.currentUser = JSON.stringify(newUser);
         }
         // verify that currentUser object is being updated
